@@ -1,9 +1,19 @@
 extends CharacterBody2D
+class_name Michel
 
 var working: bool = true
 
+var target_slot: Node2D
+var door_pos: Vector2
+
 const SPEED = 300.0
 const JUMP_VELOCITY = -400.0
+
+var is_in_place:bool = false
+var has_gone_home:bool = false
+
+signal in_place
+signal gone_home
 
 func work():
 	pass
@@ -49,3 +59,27 @@ func _physics_process(delta):
 		working = true
 
 	move_and_slide()
+
+func go_to_slot(time: float):
+	await get_tree().physics_frame
+	var tween = get_tree().create_tween()
+	var michel: Michel = self
+	tween.tween_property(michel, "global_position", target_slot.global_position, time)
+	await tween.finished
+	is_in_place = true
+	in_place.emit()
+	
+func go_home(time: float):
+	print("go_home")
+	var tween = get_tree().create_tween()
+	var michel: Michel = self
+	tween.tween_property(michel, "global_position", door_pos, time)
+	await tween.finished
+	has_gone_home = true
+	gone_home.emit()
+
+func start_work():
+	print("work begun")
+	
+func stop_work():
+	print("work stopp")
