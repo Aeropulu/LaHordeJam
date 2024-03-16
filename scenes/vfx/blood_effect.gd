@@ -15,3 +15,7 @@ func _process(delta):
 func _on_timer_timeout():
 	$crie.play()
 	$blood.emitting = true
+
+
+func _on_blood_finished():
+	queue_free()
