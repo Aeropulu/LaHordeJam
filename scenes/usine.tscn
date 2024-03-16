@@ -1,4 +1,4 @@
-[gd_scene load_steps=61 format=3 uid="uid://boqd2i8rdv6k8"]
+[gd_scene load_steps=62 format=3 uid="uid://bbmfrvkiohwg5"]
 
 [ext_resource type="Texture2D" uid="uid://d1yex5ybh0fw6" path="res://assets/sprites/machines/machineA/machineA_00000.png" id="1_f2j7j"]
 [ext_resource type="Script" path="res://scripts/MachineA.gd" id="1_l6med"]
@@ -21,11 +21,11 @@
 [ext_resource type="PackedScene" uid="uid://dlqjic7y2rfkq" path="res://scenes/vfx/text_effect.tscn" id="20_8gw2c"]
 [ext_resource type="Texture2D" uid="uid://d3a6tvedd7x5e" path="res://assets/sprites/usine/usine_layout_.png" id="23_r66r1"]
 [ext_resource type="Script" path="res://scenes/Profit.gd" id="24_vxwht"]
-[ext_resource type="PackedScene" path="res://scenes/machine.tscn" id="25_t0uso"]
+[ext_resource type="PackedScene" uid="uid://bdfy2r4dblv5p" path="res://scenes/machine.tscn" id="25_t0uso"]
 [ext_resource type="Script" path="res://scenes/Horloge.gd" id="26_d54fv"]
-[ext_resource type="PackedScene" path="res://scenes/machineA.tscn" id="26_uqcj8"]
+[ext_resource type="PackedScene" uid="uid://b8n0jndurkhb1" path="res://scenes/machineA.tscn" id="26_uqcj8"]
 [ext_resource type="Texture2D" uid="uid://bmb3c6urw50gq" path="res://assets/sprites/UI/clock.png" id="27_ex2ea"]
-[ext_resource type="PackedScene" path="res://scenes/broyeuse.tscn" id="27_uthxa"]
+[ext_resource type="PackedScene" uid="uid://el5tjscnme0r" path="res://scenes/broyeuse.tscn" id="27_uthxa"]
 [ext_resource type="Texture2D" uid="uid://qksd5hwth1wt" path="res://assets/sprites/UI/hand.png" id="28_fnqka"]
 [ext_resource type="Texture2D" uid="uid://djp7y4vqdng4k" path="res://assets/sprites/UI/pointeuse/pointeuse.png" id="29_blibx"]
 [ext_resource type="Script" path="res://scenes/Pointeuse.gd" id="29_k2v45"]
@@ -53,6 +53,7 @@
 [ext_resource type="Texture2D" uid="uid://bsvcaxgf0rkfu" path="res://assets/sprites/UI/market/market00008.png" id="52_hseva"]
 [ext_resource type="Texture2D" uid="uid://bnihiejo1jstw" path="res://assets/sprites/UI/market/market00009.png" id="53_xhokx"]
 [ext_resource type="Texture2D" uid="uid://cwpx315xj1umg" path="res://assets/sprites/UI/market/market00010.png" id="54_4tftg"]
+[ext_resource type="Script" path="res://scenes/Camera2D.gd" id="54_r10u0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_v54bu"]
 size = Vector2(338, 326)
@@ -228,7 +229,25 @@ stream = ExtResource("16_feel5")
 [node name="TextEffect" parent="." instance=ExtResource("20_8gw2c")]
 
 [node name="Machine" parent="." instance=ExtResource("25_t0uso")]
-position = Vector2(389, 239)
+position = Vector2(340, 239)
+
+[node name="1" parent="Machine/Slots" index="0"]
+position = Vector2(148, 107)
+
+[node name="2" parent="Machine/Slots" index="1"]
+position = Vector2(-131, -136)
+
+[node name="3" parent="Machine/Slots" index="2"]
+position = Vector2(-123, -38)
+
+[node name="4" parent="Machine/Slots" index="3"]
+position = Vector2(31, -20)
+
+[node name="5" parent="Machine/Slots" index="4"]
+position = Vector2(-126, 136)
+
+[node name="6" parent="Machine/Slots" index="5"]
+position = Vector2(29, 144)
 
 [node name="Machine2" parent="." instance=ExtResource("26_uqcj8")]
 position = Vector2(835, 239)
@@ -314,7 +333,9 @@ autoplay = "default"
 frame_progress = 0.411369
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(960, 540)
+unique_name_in_owner = true
+offset = Vector2(960, 540)
+script = ExtResource("54_r10u0")
 
 [connection signal="input_event" from="MachineA" to="MachineA" method="_on_input_event"]
 [connection signal="input_event" from="MachineB" to="MachineB" method="_on_input_event"]

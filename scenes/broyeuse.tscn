@@ -40,19 +40,19 @@ animations = [{
 sprite_frames = SubResource("SpriteFrames_i814x")
 
 [node name="1" parent="Slots" index="0"]
-position = Vector2(-218, 105)
+position = Vector2(-99, -193)
 
 [node name="2" parent="Slots" index="1"]
-position = Vector2(-282, 64)
+position = Vector2(-52, -229)
 
 [node name="3" parent="Slots" index="2"]
-position = Vector2(-290, -4)
+position = Vector2(18, -239)
 
 [node name="4" parent="Slots" index="3"]
-position = Vector2(-284, -82)
+position = Vector2(83, -247)
 
 [node name="5" parent="Slots" index="4"]
-position = Vector2(-246, -166)
+position = Vector2(148, -257)
 
 [node name="6" parent="Slots" index="5"]
-position = Vector2(-187, -221)
+position = Vector2(222, -261)
