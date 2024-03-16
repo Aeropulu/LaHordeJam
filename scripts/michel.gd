@@ -1,5 +1,6 @@
 extends CharacterBody2D
 
+var working: bool = false
 
 const SPEED = 300.0
 const JUMP_VELOCITY = -400.0
@@ -9,6 +10,12 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 
 func _physics_process(delta):
+	if working:
+		$Sprite2D.visible = false
+		$AnimatedSprite2D.visible = true
+	else:
+		$Sprite2D.visible = true
+		$AnimatedSprite2D.visible = false
 	# Add the gravity.
 	#if not is_on_floor():
 		#velocity.y += gravity * delta
@@ -36,5 +43,6 @@ func _physics_process(delta):
 		
 	if $AnimationPlayer.is_playing() && velocity == Vector2(0,0):
 		$AnimationPlayer.stop()
+		working = true
 
 	move_and_slide()
