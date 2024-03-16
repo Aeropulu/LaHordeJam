@@ -11,7 +11,7 @@ var _current_worker: int = 0
 
 var _time_per_worker: float = 1.0
 var _time_to_next_worker: float = 1.0
-var _slot_count = 1
+@export var _slot_count = 1
 
 signal on_profit
 signal on_time_accel
@@ -32,6 +32,21 @@ func _set_cycle_duration(new_value):
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
+	if _check_workers_in_place(delta):
+		_process_cycle(delta)
+	
+func _check_workers_in_place(delta) -> bool:
+	var all_in_place: bool = true
+	for i in range(min(_slot_count, _workers.size())):
+		var worker = _workers[i]
+		var slot = %Slots.get_child(i)
+		var is_in_place = worker.global_position.distance_squared_to(slot.global_position) < 5
+		all_in_place = all_in_place and is_in_place
+		if not is_in_place:
+			worker.global_position = worker.global_position.move_toward(slot.global_position, delta * 500)
+	return all_in_place
+	
+func _process_cycle(delta):
 	if _workers.size() <= 0 or _remaining_workers() <= 0:
 		return
 	_time_to_next_worker -= delta

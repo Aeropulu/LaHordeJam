@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://c7hn62h8pcahw"]
+[gd_scene load_steps=12 format=3 uid="uid://c7hn62h8pcahw"]
 
 [ext_resource type="Texture2D" uid="uid://es6qcw4j2o5y" path="res://assets/sprites/machines/machineB/machineB_00000.png" id="2_4qcv0"]
 [ext_resource type="Script" path="res://scripts/machine.gd" id="2_8tml0"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://bij7c3dboeppd" path="res://assets/sprites/machines/machineB/machineB_00003.png" id="5_sote0"]
 [ext_resource type="Texture2D" uid="uid://cllt6xquowf7k" path="res://assets/sprites/machines/machineB/machineB_00004.png" id="6_rhb8y"]
 [ext_resource type="Texture2D" uid="uid://fbd5ly4hjdhj" path="res://assets/sprites/machines/machineB/machineB_00005.png" id="7_6lqyp"]
+[ext_resource type="Script" path="res://scripts/FactoryManager.gd" id="8_yei8k"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_yihpj"]
 vertices = PackedVector2Array(597, 94, 1039, 98, 1065, 605, 615, 594, 598, 369, 597, 313, 518, 367, 517, 589, 85, 593, 107, 75, 517, 314, 517, 98)
@@ -53,6 +54,7 @@ navigation_polygon = SubResource("NavigationPolygon_yihpj")
 position = Vector2(305, 420)
 script = ExtResource("2_8tml0")
 machine_type = 1
+_slot_count = 3
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Machine"]
 sprite_frames = SubResource("SpriteFrames_bgj8i")
@@ -89,5 +91,10 @@ shape = SubResource("RectangleShape2D_0nvue")
 script = ExtResource("2_8tml0")
 
 [node name="Sprite2D" type="Sprite2D" parent="Machine2"]
+
+[node name="FactoryManager" type="Node2D" parent="." node_paths=PackedStringArray("machines")]
+position = Vector2(1214, 165)
+script = ExtResource("8_yei8k")
+machines = [NodePath("../Machine")]
 
 [connection signal="input_event" from="Machine/Area2D" to="Machine" method="_on_area_2d_input_event"]
