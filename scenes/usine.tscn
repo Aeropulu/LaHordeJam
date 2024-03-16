@@ -1,4 +1,4 @@
-[gd_scene load_steps=62 format=3 uid="uid://bbmfrvkiohwg5"]
+[gd_scene load_steps=61 format=3 uid="uid://bbmfrvkiohwg5"]
 
 [ext_resource type="Texture2D" uid="uid://d1yex5ybh0fw6" path="res://assets/sprites/machines/machineA/machineA_00000.png" id="1_f2j7j"]
 [ext_resource type="Script" path="res://scripts/MachineA.gd" id="1_l6med"]
@@ -21,7 +21,6 @@
 [ext_resource type="PackedScene" uid="uid://dlqjic7y2rfkq" path="res://scenes/vfx/text_effect.tscn" id="20_8gw2c"]
 [ext_resource type="Texture2D" uid="uid://bxpuql1i1j6n3" path="res://assets/sprites/usine/usine_layout.png" id="23_8vdtw"]
 [ext_resource type="Script" path="res://scenes/Profit.gd" id="24_vxwht"]
-[ext_resource type="AudioStream" uid="uid://dngqbom8v6ejb" path="res://assets/sfx/profit.wav" id="25_elqy2"]
 [ext_resource type="PackedScene" uid="uid://bdfy2r4dblv5p" path="res://scenes/machine.tscn" id="25_t0uso"]
 [ext_resource type="Script" path="res://scenes/Horloge.gd" id="26_d54fv"]
 [ext_resource type="PackedScene" uid="uid://b8n0jndurkhb1" path="res://scenes/machineA.tscn" id="26_uqcj8"]
@@ -220,21 +219,6 @@ shape = SubResource("RectangleShape2D_ritsi")
 sprite_frames = SubResource("SpriteFrames_87e42")
 autoplay = "default"
 
-[node name="TextureProgressBar" type="TextureProgressBar" parent="MachineB"]
-offset_left = 90.0
-offset_top = 2.0
-offset_right = 130.0
-offset_bottom = 130.0
-fill_mode = 3
-texture_under = ExtResource("17_syvym")
-texture_over = ExtResource("17_syvym")
-texture_progress = ExtResource("18_8g0ub")
-script = ExtResource("19_w50jk")
-metadata/_edit_use_anchors_ = true
-
-[node name="Timer" type="Timer" parent="MachineB/TextureProgressBar"]
-one_shot = true
-
 [node name="michel" parent="." instance=ExtResource("17_mmn0h")]
 position = Vector2(-1455, 912)
 
@@ -247,14 +231,27 @@ stream = ExtResource("16_feel5")
 position = Vector2(389, 239)
 
 [node name="Machine2" parent="." instance=ExtResource("26_uqcj8")]
-visible = false
 position = Vector2(835, 239)
 machine_type = 1
 
 [node name="Machine3" parent="." instance=ExtResource("27_uthxa")]
-visible = false
-position = Vector2(1297, 271)
+position = Vector2(1297, 579)
 machine_type = 2
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="Machine3"]
+offset_left = 90.0
+offset_top = 2.0
+offset_right = 130.0
+offset_bottom = 130.0
+fill_mode = 3
+texture_under = ExtResource("17_syvym")
+texture_over = ExtResource("17_syvym")
+texture_progress = ExtResource("18_8g0ub")
+script = ExtResource("19_w50jk")
+metadata/_edit_use_anchors_ = true
+
+[node name="Timer" type="Timer" parent="Machine3/TextureProgressBar"]
+one_shot = true
 
 [node name="Background" type="Sprite2D" parent="."]
 z_index = -1
@@ -264,9 +261,6 @@ texture = ExtResource("23_8vdtw")
 [node name="Profit" type="Node2D" parent="."]
 position = Vector2(1782, 262)
 script = ExtResource("24_vxwht")
-
-[node name="profitSFX" type="AudioStreamPlayer2D" parent="Profit"]
-stream = ExtResource("25_elqy2")
 
 [node name="profitLabel" type="RichTextLabel" parent="Profit"]
 offset_right = 40.0
@@ -321,7 +315,7 @@ frame_progress = 0.411369
 
 [connection signal="input_event" from="MachineA" to="MachineA" method="_on_input_event"]
 [connection signal="input_event" from="MachineB" to="MachineB" method="_on_input_event"]
-[connection signal="timeout" from="MachineB/TextureProgressBar/Timer" to="MachineB/TextureProgressBar" method="_on_timer_timeout"]
+[connection signal="timeout" from="Machine3/TextureProgressBar/Timer" to="Machine3/TextureProgressBar" method="_on_timer_timeout"]
 [connection signal="animation_finished" from="Pointeuse/pointer" to="Pointeuse" method="_on_pointer_animation_finished"]
 [connection signal="input_event" from="Pointeuse/Area2D" to="Pointeuse" method="_on_area_2d_input_event"]
 

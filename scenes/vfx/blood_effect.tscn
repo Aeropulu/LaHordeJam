@@ -1,0 +1,46 @@
+[gd_scene load_steps=5 format=3 uid="uid://c7aawfyrbbndc"]
+
+[ext_resource type="Script" path="res://scenes/vfx/blood_effect.gd" id="1_fcr34"]
+[ext_resource type="AudioStream" uid="uid://d2jb6hhevi06o" path="res://assets/sfx/355052__greatnate98__bone-crunch.wav" id="1_gi24o"]
+[ext_resource type="AudioStream" uid="uid://bj85g7iv55g3a" path="res://assets/sfx/crie1.wav" id="2_yfdr8"]
+
+[sub_resource type="Gradient" id="Gradient_diwqp"]
+offsets = PackedFloat32Array(0, 0.512111)
+colors = PackedColorArray(1, 0, 0, 0.137255, 0.870387, 1.44392e-06, 1.2514e-06, 1)
+
+[node name="blood_effect" type="Node2D"]
+position = Vector2(-152, -144)
+script = ExtResource("1_fcr34")
+
+[node name="broyeuse" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("1_gi24o")
+volume_db = -5.0
+
+[node name="crie" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_yfdr8")
+volume_db = 5.0
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.2
+one_shot = true
+autostart = true
+
+[node name="blood" type="CPUParticles2D" parent="."]
+emitting = false
+amount = 300
+one_shot = true
+speed_scale = 1.5
+explosiveness = 0.38
+lifetime_randomness = 0.55
+emission_shape = 3
+emission_rect_extents = Vector2(100, 1)
+direction = Vector2(0, 1)
+spread = 111.23
+gravity = Vector2(0, -980)
+initial_velocity_min = 141.51
+initial_velocity_max = 207.54
+scale_amount_min = 3.0
+scale_amount_max = 8.0
+color_ramp = SubResource("Gradient_diwqp")
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
