@@ -1,4 +1,4 @@
-[gd_scene load_steps=64 format=3 uid="uid://bbmfrvkiohwg5"]
+[gd_scene load_steps=65 format=3 uid="uid://bbmfrvkiohwg5"]
 
 [ext_resource type="Texture2D" uid="uid://d1yex5ybh0fw6" path="res://assets/sprites/machines/machineA/machineA_00000.png" id="1_f2j7j"]
 [ext_resource type="Script" path="res://scripts/MachineA.gd" id="1_l6med"]
@@ -22,6 +22,7 @@
 [ext_resource type="Texture2D" uid="uid://d3a6tvedd7x5e" path="res://assets/sprites/usine/usine_layout_.png" id="23_r66r1"]
 [ext_resource type="Script" path="res://scenes/Profit.gd" id="24_vxwht"]
 [ext_resource type="PackedScene" uid="uid://chr8ktkq33kv5" path="res://scenes/machineC.tscn" id="24_w07ob"]
+[ext_resource type="PackedScene" uid="uid://djxih46breah5" path="res://scenes/machineD.tscn" id="25_024x3"]
 [ext_resource type="PackedScene" uid="uid://bdfy2r4dblv5p" path="res://scenes/machine.tscn" id="25_t0uso"]
 [ext_resource type="Script" path="res://scenes/Horloge.gd" id="26_d54fv"]
 [ext_resource type="PackedScene" uid="uid://b8n0jndurkhb1" path="res://scenes/machineA.tscn" id="26_uqcj8"]
@@ -227,6 +228,7 @@ position = Vector2(-1455, 912)
 
 [node name="GameMusic" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("16_feel5")
+autoplay = true
 
 [node name="TextEffect" parent="." instance=ExtResource("20_8gw2c")]
 
@@ -255,8 +257,11 @@ position = Vector2(29, 144)
 position = Vector2(835, 239)
 machine_type = 1
 
+[node name="Machine6" parent="." instance=ExtResource("25_024x3")]
+position = Vector2(1307, 249)
+
 [node name="Machine3" parent="." instance=ExtResource("27_uthxa")]
-position = Vector2(1332, 438)
+position = Vector2(1324, 612)
 machine_type = 2
 
 [node name="TextureProgressBar" type="TextureProgressBar" parent="Machine3"]

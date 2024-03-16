@@ -16,6 +16,7 @@ func launch_journey():
 	$pointerSFX.play()
 	await $pointerSFX.finished
 	$ding.play()
+	FactoryManager._on_button_pressed()
 
 func _on_area_2d_input_event(viewport, event, shape_idx):
 	if event is InputEventMouseButton and event.pressed:

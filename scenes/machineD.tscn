@@ -1,0 +1,78 @@
+[gd_scene load_steps=18 format=3 uid="uid://djxih46breah5"]
+
+[ext_resource type="PackedScene" uid="uid://bdfy2r4dblv5p" path="res://scenes/machine.tscn" id="1_gimwe"]
+[ext_resource type="Texture2D" uid="uid://dkri0ronsbfl8" path="res://assets/sprites/machines/machineE/machineE_00000.png" id="2_1xuec"]
+[ext_resource type="Texture2D" uid="uid://dxs6hjqh1tmwv" path="res://assets/sprites/machines/machineE/machineE_00001.png" id="3_8o8jw"]
+[ext_resource type="Texture2D" uid="uid://cfaurhv5ujddu" path="res://assets/sprites/machines/machineE/machineE_00002.png" id="4_ddh0q"]
+[ext_resource type="Texture2D" uid="uid://bm1yyvokxlpqf" path="res://assets/sprites/machines/machineE/machineE_00003.png" id="5_b384w"]
+[ext_resource type="Texture2D" uid="uid://dpyr5n54rlafa" path="res://assets/sprites/machines/machineE/machineE_00004.png" id="6_nr4vk"]
+[ext_resource type="Texture2D" uid="uid://7jshguubt60y" path="res://assets/sprites/machines/machineE/machineE_00005.png" id="7_71eqm"]
+[ext_resource type="Texture2D" uid="uid://c7bf4i0crbjst" path="res://assets/sprites/machines/machineE/machineE_00006.png" id="8_jtu8f"]
+[ext_resource type="Texture2D" uid="uid://fpa0m1sxyls5" path="res://assets/sprites/machines/machineE/machineE_00007.png" id="9_qxlrv"]
+[ext_resource type="Texture2D" uid="uid://drdjxdfp7dxql" path="res://assets/sprites/machines/machineE/machineE_00008.png" id="10_opnj5"]
+[ext_resource type="Texture2D" uid="uid://dxqfoug58e8g" path="res://assets/sprites/machines/machineE/machineE_00009.png" id="11_tyn8u"]
+[ext_resource type="Texture2D" uid="uid://btwlsl6taj0vj" path="res://assets/sprites/machines/machineE/machineE_00010.png" id="12_cs0o2"]
+[ext_resource type="Texture2D" uid="uid://dnijmprjy7lo6" path="res://assets/sprites/machines/machineE/machineE_00011.png" id="13_1354b"]
+[ext_resource type="Texture2D" uid="uid://d34gq8qaa7c13" path="res://assets/sprites/machines/machineE/machineE_00012.png" id="14_36207"]
+[ext_resource type="Texture2D" uid="uid://fj76yuthslar" path="res://assets/sprites/machines/machineE/machineE_00013.png" id="15_epf5m"]
+[ext_resource type="Texture2D" uid="uid://bathshs5m87o3" path="res://assets/sprites/machines/machineE/machineE_00014.png" id="16_6n47j"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_2rids"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_1xuec")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_8o8jw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_ddh0q")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_b384w")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_nr4vk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_71eqm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_jtu8f")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_qxlrv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_opnj5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_tyn8u")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_cs0o2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_1354b")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_36207")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_epf5m")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_6n47j")
+}],
+"loop": true,
+"name": &"default",
+"speed": 12.0
+}]
+
+[node name="Machine" instance=ExtResource("1_gimwe")]
+
+[node name="AnimatedSprite2D" parent="." index="0"]
+sprite_frames = SubResource("SpriteFrames_2rids")
+frame = 3
+frame_progress = 0.405735

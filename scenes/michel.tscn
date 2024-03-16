@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://cooe4hsaj68t4"]
+[gd_scene load_steps=16 format=3 uid="uid://cooe4hsaj68t4"]
 
 [ext_resource type="Script" path="res://scripts/michel.gd" id="1_5mdh5"]
 [ext_resource type="Texture2D" uid="uid://ioalijcxr8jw" path="res://assets/sprites/michel/michel.png" id="2_5374x"]
@@ -6,6 +6,9 @@
 [ext_resource type="Texture2D" uid="uid://v5bfs122w7q3" path="res://assets/sprites/michel/michel_work/michel_work00001.png" id="4_256x1"]
 [ext_resource type="Texture2D" uid="uid://b2ekrb6nec2mm" path="res://assets/sprites/michel/michel_work/michel_work00002.png" id="5_ch47i"]
 [ext_resource type="Texture2D" uid="uid://8t7xgamd13uo" path="res://assets/sprites/michel/michel_work/michel_work00003.png" id="6_qha4o"]
+[ext_resource type="Texture2D" uid="uid://dy241knpxm8ml" path="res://assets/sprites/michel/michel_hold_body.png" id="7_rvpd8"]
+[ext_resource type="Texture2D" uid="uid://b4ftkbjqhhp6o" path="res://assets/sprites/michel/michel_hold_arm2.png" id="8_j1hej"]
+[ext_resource type="Texture2D" uid="uid://dsbt4khh38h2t" path="res://assets/sprites/michel/michel_hold_arm1.png" id="9_hbl7h"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_u3v2u"]
 radius = 23.0
@@ -93,13 +96,15 @@ animations = [{
 "speed": 12.0
 }]
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_6ae7x"]
+radius = 41.0
+height = 96.0
+
 [node name="michel" type="CharacterBody2D"]
-position = Vector2(-1, 5)
 script = ExtResource("1_5mdh5")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_u3v2u")
-disabled = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 visible = false
@@ -114,3 +119,23 @@ libraries = {
 sprite_frames = SubResource("SpriteFrames_rlo3w")
 autoplay = "default"
 frame_progress = 0.428058
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CapsuleShape2D_6ae7x")
+
+[node name="drag" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(-2, 33)
+scale = Vector2(-1, 1)
+texture = ExtResource("7_rvpd8")
+
+[node name="arm2" type="Sprite2D" parent="drag"]
+visible = false
+texture = ExtResource("8_j1hej")
+
+[node name="arm1" type="Sprite2D" parent="drag"]
+texture = ExtResource("9_hbl7h")
+
+[connection signal="input_event" from="Area2D" to="." method="_on_area_2d_input_event"]
