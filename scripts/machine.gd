@@ -3,7 +3,7 @@ class_name  Machine
 
 enum Machinetype { PROFIT, TIME, BROYEUSE }
 @export var machine_type: Machinetype
-var _worker_scene: PackedScene = preload("res://scenes/test_character.tscn")
+var _worker_scene: PackedScene = preload("res://scenes/michel.tscn")
 
 @export var _cycle_duration: float = 1.0 : set = _set_cycle_duration
 var _current_worker: int = 0

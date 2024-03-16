@@ -1,0 +1,58 @@
+[gd_scene load_steps=9 format=3 uid="uid://el5tjscnme0r"]
+
+[ext_resource type="PackedScene" uid="uid://bdfy2r4dblv5p" path="res://scenes/machine.tscn" id="1_1y4xf"]
+[ext_resource type="Texture2D" uid="uid://jpo2hwr74nr0" path="res://assets/sprites/machines/broyeuse/broyeuse_00000.png" id="2_ivmgp"]
+[ext_resource type="Texture2D" uid="uid://t535hao4re63" path="res://assets/sprites/machines/broyeuse/broyeuse_00001.png" id="3_gsloh"]
+[ext_resource type="Texture2D" uid="uid://brropyctk43ky" path="res://assets/sprites/machines/broyeuse/broyeuse_00002.png" id="4_a2rrr"]
+[ext_resource type="Texture2D" uid="uid://cdvu66dthshm6" path="res://assets/sprites/machines/broyeuse/broyeuse_00003.png" id="5_g28ae"]
+[ext_resource type="Texture2D" uid="uid://bc4qsflf34i0c" path="res://assets/sprites/machines/broyeuse/broyeuse_00004.png" id="6_o62ki"]
+[ext_resource type="Texture2D" uid="uid://df7hq4rwsw164" path="res://assets/sprites/machines/broyeuse/broyeuse_00005.png" id="7_wxjlf"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_i814x"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_ivmgp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_gsloh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_a2rrr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_g28ae")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_o62ki")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_wxjlf")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Machine" instance=ExtResource("1_1y4xf")]
+
+[node name="AnimatedSprite2D" parent="." index="0"]
+sprite_frames = SubResource("SpriteFrames_i814x")
+
+[node name="1" parent="Slots" index="0"]
+position = Vector2(-218, 105)
+
+[node name="2" parent="Slots" index="1"]
+position = Vector2(-282, 64)
+
+[node name="3" parent="Slots" index="2"]
+position = Vector2(-290, -4)
+
+[node name="4" parent="Slots" index="3"]
+position = Vector2(-284, -82)
+
+[node name="5" parent="Slots" index="4"]
+position = Vector2(-246, -166)
+
+[node name="6" parent="Slots" index="5"]
+position = Vector2(-187, -221)

@@ -1,9 +1,12 @@
 extends CharacterBody2D
 
-var working: bool = false
+var working: bool = true
 
 const SPEED = 300.0
 const JUMP_VELOCITY = -400.0
+
+func work():
+	pass
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
@@ -19,11 +22,11 @@ func _physics_process(delta):
 	# Add the gravity.
 	#if not is_on_floor():
 		#velocity.y += gravity * delta
-
-	# Handle jump.
-	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
-		velocity.y = JUMP_VELOCITY
-		
+#
+	## Handle jump.
+	#if Input.is_action_just_pressed("ui_accept") and is_on_floor():
+		#velocity.y = JUMP_VELOCITY
+		#
 	var directionY = Input.get_axis("ui_up", "ui_down")
 	if directionY:
 		velocity.y = directionY * SPEED
