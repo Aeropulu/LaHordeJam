@@ -3,6 +3,6 @@
 [ext_resource type="Script" path="res://scripts/FactoryManager.gd" id="1_ivwkk"]
 
 [node name="FactoryManager" type="Node2D"]
-position = Vector2(1214, 165)
+position = Vector2(1727, 256)
 script = ExtResource("1_ivwkk")
 day_duration = 3.0
