@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://bbmfrvkiohwg5"]
+[gd_scene load_steps=45 format=3 uid="uid://bbmfrvkiohwg5"]
 
 [ext_resource type="Texture2D" uid="uid://d1yex5ybh0fw6" path="res://assets/sprites/machines/machineA/machineA_00000.png" id="1_f2j7j"]
 [ext_resource type="Script" path="res://scripts/MachineA.gd" id="1_l6med"]
@@ -23,8 +23,22 @@
 [ext_resource type="Script" path="res://scenes/Profit.gd" id="24_vxwht"]
 [ext_resource type="AudioStream" uid="uid://dngqbom8v6ejb" path="res://assets/sfx/profit.wav" id="25_elqy2"]
 [ext_resource type="PackedScene" uid="uid://bdfy2r4dblv5p" path="res://scenes/machine.tscn" id="25_t0uso"]
+[ext_resource type="Script" path="res://scenes/Horloge.gd" id="26_d54fv"]
 [ext_resource type="PackedScene" uid="uid://b8n0jndurkhb1" path="res://scenes/machineA.tscn" id="26_uqcj8"]
+[ext_resource type="Texture2D" uid="uid://bmb3c6urw50gq" path="res://assets/sprites/UI/clock.png" id="27_ex2ea"]
 [ext_resource type="PackedScene" uid="uid://el5tjscnme0r" path="res://scenes/broyeuse.tscn" id="27_uthxa"]
+[ext_resource type="Texture2D" uid="uid://qksd5hwth1wt" path="res://assets/sprites/UI/hand.png" id="28_fnqka"]
+[ext_resource type="Texture2D" uid="uid://djp7y4vqdng4k" path="res://assets/sprites/UI/pointeuse/pointeuse.png" id="29_blibx"]
+[ext_resource type="Texture2D" uid="uid://ugunavtyvgie" path="res://assets/sprites/UI/pointeuse/pointeuse00000.png" id="30_1dcjx"]
+[ext_resource type="Texture2D" uid="uid://b2ny0xtsy7bvm" path="res://assets/sprites/UI/pointeuse/pointeuse00001.png" id="31_mauqa"]
+[ext_resource type="Texture2D" uid="uid://betkqxxlpds6s" path="res://assets/sprites/UI/pointeuse/pointeuse00002.png" id="32_cj51w"]
+[ext_resource type="Texture2D" uid="uid://dtspq2qe5rp3a" path="res://assets/sprites/UI/pointeuse/pointeuse00003.png" id="33_bsbua"]
+[ext_resource type="Texture2D" uid="uid://10vp2kskeli4" path="res://assets/sprites/UI/pointeuse/pointeuse00004.png" id="34_x643l"]
+[ext_resource type="Texture2D" uid="uid://dm4hchgn18eoa" path="res://assets/sprites/UI/pointeuse/pointeuse00005.png" id="35_ieaif"]
+[ext_resource type="Texture2D" uid="uid://bdxjbifucepdk" path="res://assets/sprites/UI/pointeuse/pointeuse00006.png" id="36_p0rm0"]
+[ext_resource type="Texture2D" uid="uid://bmyg8a1ipl8ea" path="res://assets/sprites/UI/pointeuse/pointeuse00007.png" id="37_j0426"]
+[ext_resource type="Texture2D" uid="uid://cp24e7vnbwfob" path="res://assets/sprites/UI/pointeuse/pointeuse00008.png" id="38_y1u2f"]
+[ext_resource type="Texture2D" uid="uid://c72b5htqtcf8j" path="res://assets/sprites/UI/pointeuse/pointeuse00009.png" id="39_gmch1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_v54bu"]
 size = Vector2(338, 326)
@@ -84,11 +98,48 @@ animations = [{
 "speed": 12.0
 }]
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_6qc18"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("30_1dcjx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("31_mauqa")
+}, {
+"duration": 1.0,
+"texture": ExtResource("32_cj51w")
+}, {
+"duration": 1.0,
+"texture": ExtResource("33_bsbua")
+}, {
+"duration": 1.0,
+"texture": ExtResource("34_x643l")
+}, {
+"duration": 1.0,
+"texture": ExtResource("35_ieaif")
+}, {
+"duration": 1.0,
+"texture": ExtResource("36_p0rm0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("37_j0426")
+}, {
+"duration": 1.0,
+"texture": ExtResource("38_y1u2f")
+}, {
+"duration": 1.0,
+"texture": ExtResource("39_gmch1")
+}],
+"loop": false,
+"name": &"default",
+"speed": 12.0
+}]
+
 [node name="Usine" type="Node2D"]
-position = Vector2(-692, 1091)
 
 [node name="MachineA" type="Area2D" parent="."]
-position = Vector2(349, 299)
+position = Vector2(-1105, 1206)
 script = ExtResource("1_l6med")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MachineA"]
@@ -100,7 +151,7 @@ autoplay = "default"
 frame_progress = 0.193712
 
 [node name="MachineB" type="Area2D" parent="."]
-position = Vector2(864, 303)
+position = Vector2(-590, 1210)
 script = ExtResource("1_l6med")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MachineB"]
@@ -126,6 +177,7 @@ metadata/_edit_use_anchors_ = true
 one_shot = true
 
 [node name="michel" parent="." instance=ExtResource("17_mmn0h")]
+position = Vector2(-1455, 912)
 
 [node name="GameMusic" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("16_feel5")
@@ -133,7 +185,7 @@ stream = ExtResource("16_feel5")
 [node name="TextEffect" parent="." instance=ExtResource("20_8gw2c")]
 
 [node name="Machine" parent="." instance=ExtResource("25_t0uso")]
-position = Vector2(1084, -846)
+position = Vector2(389, 239)
 
 [node name="Machine2" parent="." instance=ExtResource("26_uqcj8")]
 visible = false
@@ -147,11 +199,11 @@ machine_type = 2
 
 [node name="Background" type="Sprite2D" parent="."]
 z_index = -1
-position = Vector2(1657, -548)
+position = Vector2(962, 537)
 texture = ExtResource("23_8vdtw")
 
 [node name="Profit" type="Node2D" parent="."]
-position = Vector2(858, -162)
+position = Vector2(650, 914)
 script = ExtResource("24_vxwht")
 
 [node name="profitSFX" type="AudioStreamPlayer2D" parent="Profit"]
@@ -160,6 +212,30 @@ stream = ExtResource("25_elqy2")
 [node name="profitLabel" type="RichTextLabel" parent="Profit"]
 offset_right = 40.0
 offset_bottom = 40.0
+
+[node name="Horloge" type="Node2D" parent="."]
+position = Vector2(1778, 128)
+script = ExtResource("26_d54fv")
+
+[node name="clock" type="Sprite2D" parent="Horloge"]
+texture = ExtResource("27_ex2ea")
+
+[node name="fleche" type="Sprite2D" parent="Horloge"]
+texture = ExtResource("28_fnqka")
+offset = Vector2(0, -32)
+
+[node name="Pointeuse" type="Node2D" parent="."]
+position = Vector2(1770, 870)
+
+[node name="background" type="Sprite2D" parent="Pointeuse"]
+texture = ExtResource("29_blibx")
+
+[node name="pointer" type="AnimatedSprite2D" parent="Pointeuse"]
+visible = false
+position = Vector2(0, -276)
+sprite_frames = SubResource("SpriteFrames_6qc18")
+frame = 9
+frame_progress = 1.0
 
 [connection signal="input_event" from="MachineA" to="MachineA" method="_on_input_event"]
 [connection signal="input_event" from="MachineB" to="MachineB" method="_on_input_event"]

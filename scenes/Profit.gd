@@ -2,7 +2,6 @@ extends Node2D
 
 var global_profit = 1000
 
-
 func generate_profit(profit):
 	#VFX
 	
