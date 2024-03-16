@@ -1,10 +1,11 @@
 extends Node2D
 class_name  Machine
 
-var machine_parameters # resource type
+enum Machinetype { PROFIT, TIME, BROYEUSE }
+@export var machine_type: Machinetype
 var _worker_scene: PackedScene = preload("res://scenes/test_character.tscn")
 
-@export var _cycle_duration: float = 1.0
+@export var _cycle_duration: float = 1.0 : set = _set_cycle_duration
 var _current_worker: int = 0
 @export var _workers = []
 
@@ -12,12 +13,22 @@ var _time_per_worker: float = 1.0
 var _time_to_next_worker: float = 1.0
 var _slot_count = 1
 
-signal has_produced # maybe this should go in the machine_parameters?
+signal on_profit
+signal on_time_accel
+signal on_crush_worker
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
 
+func _set_cycle_duration(new_value):
+	if (_cycle_duration != 0):
+		var ratio: float = new_value / _cycle_duration
+		_time_to_next_worker *= ratio
+	_cycle_duration = new_value
+	if (_workers.size() != 0):
+		_time_per_worker = _cycle_duration / _workers.size()
+	$AnimatedSprite2D.speed_scale = 1.0 / _cycle_duration
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
@@ -36,8 +47,16 @@ func _remaining_workers() -> int:
 	return _workers.size() - _current_worker
 	
 func _produce() -> void:
-	# machine_parameters.produce()
-	has_produced.emit()
+	match machine_type:
+		Machinetype.PROFIT:
+			print("PROFIT")
+			on_profit.emit()
+		Machinetype.TIME:
+			print("GO FAST")
+			on_time_accel.emit()
+		Machinetype.BROYEUSE:
+			print("NOM NOM NOM")
+			on_crush_worker.emit()
 	
 func _add_worker(worker) -> bool:
 	var slots_count = %Slots.get_child_count()
@@ -50,7 +69,10 @@ func _add_worker(worker) -> bool:
 	return true
 
 
-func _on_area_2d_input_event(viewport, event, shape_idx):
+func _on_area_2d_input_event(_viewport, event, _shape_idx):
 	if event is InputEventMouseButton and event.pressed:
+		if event.button_mask & 2 == 2:
+			_set_cycle_duration(_cycle_duration * 0.9)
+			return
 		var worker = _worker_scene.instantiate()
 		_add_worker(worker)
