@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://bbmfrvkiohwg5"]
+[gd_scene load_steps=25 format=3 uid="uid://bbmfrvkiohwg5"]
 
 [ext_resource type="Texture2D" uid="uid://d1yex5ybh0fw6" path="res://assets/sprites/machines/machineA/machineA_00000.png" id="1_f2j7j"]
 [ext_resource type="Script" path="res://scripts/MachineA.gd" id="1_l6med"]
@@ -15,6 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://fbd5ly4hjdhj" path="res://assets/sprites/machines/machineB/machineB_00005.png" id="13_8hmjw"]
 [ext_resource type="Script" path="res://scripts/michel.gd" id="14_52xnb"]
 [ext_resource type="Texture2D" uid="uid://ioalijcxr8jw" path="res://assets/sprites/michel/michel.png" id="15_hxnjw"]
+[ext_resource type="AudioStream" uid="uid://b25qd31qd13mu" path="res://assets/music/Energy_Source_-_Radiation.ogg" id="16_feel5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_v54bu"]
 size = Vector2(338, 326)
@@ -179,6 +180,16 @@ texture = ExtResource("15_hxnjw")
 libraries = {
 "": SubResource("AnimationLibrary_1kthv")
 }
+speed_scale = 2.0
+
+[node name="GameMusic" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("16_feel5")
+autoplay = true
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+fill_mode = 3
 
 [connection signal="input_event" from="MachineA" to="MachineA" method="_on_input_event"]
 [connection signal="input_event" from="MachineB" to="MachineB" method="_on_input_event"]
