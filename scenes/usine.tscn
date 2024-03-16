@@ -14,12 +14,12 @@
 [ext_resource type="Texture2D" uid="uid://bc4qsflf34i0c" path="res://assets/sprites/machines/broyeuse/broyeuse_00004.png" id="12_kbd6x"]
 [ext_resource type="Texture2D" uid="uid://df7hq4rwsw164" path="res://assets/sprites/machines/broyeuse/broyeuse_00005.png" id="13_su1aa"]
 [ext_resource type="AudioStream" uid="uid://b25qd31qd13mu" path="res://assets/music/Energy_Source_-_Radiation.ogg" id="16_feel5"]
-[ext_resource type="PackedScene" uid="uid://drhsspm2dnov5" path="res://scenes/michel.tscn" id="17_mmn0h"]
+[ext_resource type="PackedScene" uid="uid://cooe4hsaj68t4" path="res://scenes/michel.tscn" id="17_mmn0h"]
 [ext_resource type="Texture2D" uid="uid://eenud47e0iot" path="res://assets/sprites/machines/barre place holder.png" id="17_syvym"]
 [ext_resource type="Texture2D" uid="uid://dp0stfmlebfxp" path="res://assets/sprites/machines/bar progress fill placeholder.png" id="18_8g0ub"]
 [ext_resource type="Script" path="res://scenes/TextureProgressBar.gd" id="19_w50jk"]
 [ext_resource type="PackedScene" uid="uid://dlqjic7y2rfkq" path="res://scenes/vfx/text_effect.tscn" id="20_8gw2c"]
-[ext_resource type="Texture2D" uid="uid://bxpuql1i1j6n3" path="res://assets/sprites/usine/usine_layout.png" id="23_8vdtw"]
+[ext_resource type="Texture2D" uid="uid://d3a6tvedd7x5e" path="res://assets/sprites/usine/usine_layout_.png" id="23_r66r1"]
 [ext_resource type="Script" path="res://scenes/Profit.gd" id="24_vxwht"]
 [ext_resource type="PackedScene" uid="uid://bdfy2r4dblv5p" path="res://scenes/machine.tscn" id="25_t0uso"]
 [ext_resource type="Script" path="res://scenes/Horloge.gd" id="26_d54fv"]
@@ -256,7 +256,7 @@ one_shot = true
 [node name="Background" type="Sprite2D" parent="."]
 z_index = -1
 position = Vector2(962, 537)
-texture = ExtResource("23_8vdtw")
+texture = ExtResource("23_r66r1")
 
 [node name="Profit" type="Node2D" parent="."]
 position = Vector2(1782, 262)
@@ -312,6 +312,9 @@ texture = ExtResource("43_7ldwn")
 sprite_frames = SubResource("SpriteFrames_maoun")
 autoplay = "default"
 frame_progress = 0.411369
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(960, 540)
 
 [connection signal="input_event" from="MachineA" to="MachineA" method="_on_input_event"]
 [connection signal="input_event" from="MachineB" to="MachineB" method="_on_input_event"]
