@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://d0ei1sxq2of6o"]
+
+[ext_resource type="Script" path="res://scripts/FactoryManager.gd" id="1_ivwkk"]
+
+[node name="FactoryManager" type="Node2D"]
+position = Vector2(1214, 165)
+script = ExtResource("1_ivwkk")
+day_duration = 3.0

@@ -7,7 +7,6 @@
 [ext_resource type="Texture2D" uid="uid://bij7c3dboeppd" path="res://assets/sprites/machines/machineB/machineB_00003.png" id="5_sote0"]
 [ext_resource type="Texture2D" uid="uid://cllt6xquowf7k" path="res://assets/sprites/machines/machineB/machineB_00004.png" id="6_rhb8y"]
 [ext_resource type="Texture2D" uid="uid://fbd5ly4hjdhj" path="res://assets/sprites/machines/machineB/machineB_00005.png" id="7_6lqyp"]
-[ext_resource type="Script" path="res://scripts/FactoryManager.gd" id="8_yei8k"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_yihpj"]
 vertices = PackedVector2Array(597, 94, 1039, 98, 1065, 605, 615, 594, 598, 369, 597, 313, 518, 367, 517, 589, 85, 593, 107, 75, 517, 314, 517, 98)
@@ -44,6 +43,19 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0nvue"]
 size = Vector2(309, 306)
 
+[sub_resource type="GDScript" id="GDScript_1uui3"]
+script/source = "extends Button
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	pressed.connect(FactoryManager._on_button_pressed)
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	pass
+"
+
 [node name="Test Map" type="Node2D"]
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
@@ -53,15 +65,12 @@ navigation_polygon = SubResource("NavigationPolygon_yihpj")
 [node name="Machine" type="Node2D" parent="."]
 position = Vector2(744, 380)
 script = ExtResource("2_8tml0")
-machine_type = 1
-_slot_count = 6
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Machine"]
 sprite_frames = SubResource("SpriteFrames_bgj8i")
 autoplay = "default"
 
 [node name="Slots" type="Node2D" parent="Machine"]
-unique_name_in_owner = true
 
 [node name="1" type="Node2D" parent="Machine/Slots"]
 position = Vector2(102, 21)
@@ -90,8 +99,6 @@ shape = SubResource("RectangleShape2D_0nvue")
 [node name="Machine2" type="Node2D" parent="."]
 position = Vector2(250, 204)
 script = ExtResource("2_8tml0")
-machine_type = 1
-_slot_count = 6
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Machine2"]
 sprite_frames = SubResource("SpriteFrames_bgj8i")
@@ -123,17 +130,11 @@ position = Vector2(-194, -97)
 position = Vector2(0.5, 6)
 shape = SubResource("RectangleShape2D_0nvue")
 
-[node name="FactoryManager" type="Node2D" parent="." node_paths=PackedStringArray("machines")]
-position = Vector2(1214, 165)
-script = ExtResource("8_yei8k")
-day_duration = 2.0
-machines = [NodePath("../Machine"), NodePath("../Machine2")]
-
 [node name="Button" type="Button" parent="."]
 offset_right = 8.0
 offset_bottom = 8.0
 text = "GO"
+script = SubResource("GDScript_1uui3")
 
 [connection signal="input_event" from="Machine/Area2D" to="Machine" method="_on_area_2d_input_event"]
 [connection signal="input_event" from="Machine2/Area2D" to="Machine2" method="_on_area_2d_input_event"]
-[connection signal="pressed" from="Button" to="FactoryManager" method="_on_button_pressed"]

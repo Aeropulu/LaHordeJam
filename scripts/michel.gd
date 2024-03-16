@@ -12,6 +12,8 @@ const JUMP_VELOCITY = -400.0
 var is_in_place:bool = false
 var has_gone_home:bool = false
 
+var _machine: Machine
+
 signal in_place
 signal gone_home
 
@@ -26,6 +28,8 @@ func _physics_process(delta):
 	if working:
 		$Sprite2D.visible = false
 		$AnimatedSprite2D.visible = true
+		if _machine is Machine:
+			$AnimatedSprite2D.speed_scale = 1 / _machine._cycle_duration
 	else:
 		$Sprite2D.visible = true
 		$AnimatedSprite2D.visible = false

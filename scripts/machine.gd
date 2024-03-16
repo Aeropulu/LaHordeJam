@@ -14,8 +14,6 @@ var _time_to_next_worker: float = 1.0
 @export var _slot_count = 1
 
 var _is_working:bool = false
-var _day_duration:float = 0.0
-var _remaining_day_time:float = 0.0
 
 signal on_profit
 signal on_time_accel
@@ -28,6 +26,7 @@ signal work_stopped
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	$AnimatedSprite2D.speed_scale = 0
+	FactoryManager.add_machine(self)
 
 func _set_cycle_duration(new_value):
 	if (_cycle_duration != 0):
@@ -42,9 +41,9 @@ func _process(delta):
 	if _is_working:
 		_process_cycle(delta)
 	
-func start_work(day_duration: float):
-	_day_duration = day_duration
-	_remaining_day_time = _day_duration
+func start_work():
+	if _workers.size() == 0:
+		return
 	_is_working = true
 	for worker in _workers:
 		worker.start_work()
@@ -61,7 +60,6 @@ func stop_work():
 func _process_cycle(delta):
 	if _workers.size() <= 0 or _remaining_workers() <= 0:
 		return
-	_remaining_day_time -= delta
 	_time_to_next_worker -= delta
 	if _time_to_next_worker <= 0:
 		_time_to_next_worker += _time_per_worker
@@ -70,7 +68,7 @@ func _process_cycle(delta):
 		_current_worker += 1
 		if _current_worker >= _workers.size():
 			_current_worker = 0
-			if (_remaining_day_time < _cycle_duration):
+			if (FactoryManager._remaining_day_time < _cycle_duration):
 				# No time to work more today lads
 				stop_work()
 
@@ -100,8 +98,14 @@ func _on_area_2d_input_event(_viewport, event, _shape_idx):
 	if event is InputEventMouseButton and event.pressed:
 		if event.button_mask & 2 == 2:
 			_set_cycle_duration(_cycle_duration * 0.9)
-			return
-		var worker = _worker_scene.instantiate()
+			print("brrrrr")
+		else:
+			set_slot_count(_slot_count + 1)
+			
+func set_slot_count(number:int):
+	number = clampi(number, 1, $Slots.get_child_count())
+	_slot_count = number
+	print(number)
 
 func get_slot(index: int) -> Node2D:
 	if index <= min(_slot_count, $Slots.get_child_count()):
