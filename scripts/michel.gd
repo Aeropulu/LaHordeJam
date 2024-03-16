@@ -1,7 +1,7 @@
 extends CharacterBody2D
 class_name Michel
 
-var working: bool = true
+var working: bool = false
 
 var target_slot: Node2D
 var door_pos: Vector2
@@ -56,7 +56,7 @@ func _physics_process(delta):
 		
 	if $AnimationPlayer.is_playing() && velocity == Vector2(0,0):
 		$AnimationPlayer.stop()
-		working = true
+		## working = true
 
 	move_and_slide()
 
@@ -79,7 +79,9 @@ func go_home(time: float):
 	gone_home.emit()
 
 func start_work():
+	working = true
 	print("work begun")
 	
 func stop_work():
+	working = false
 	print("work stopp")
