@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://c7hn62h8pcahw"]
+
+[ext_resource type="PackedScene" uid="uid://cec4k5onneoq3" path="res://scenes/test_character.tscn" id="1_iylm7"]
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_yihpj"]
+vertices = PackedVector2Array(597, 94, 1039, 98, 1065, 605, 615, 594, 598, 369, 597, 313, 518, 367, 517, 589, 85, 593, 107, 75, 517, 314, 517, 98)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3, 4, 5), PackedInt32Array(6, 7, 8, 9, 10), PackedInt32Array(5, 4, 6, 10), PackedInt32Array(9, 11, 10)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(98, 65, 528, 89, 527, 304, 587, 303, 587, 84, 1049, 89, 1076, 616, 606, 604, 589, 379, 528, 377, 527, 599, 75, 604)])
+source_geometry_group_name = &"navigation_polygon_source_group"
+
+[node name="Test Map" type="Node2D"]
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+navigation_polygon = SubResource("NavigationPolygon_yihpj")
+
+[node name="Test Character" parent="." instance=ExtResource("1_iylm7")]

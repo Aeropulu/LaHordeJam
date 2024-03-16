@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://cec4k5onneoq3"]
+
+[ext_resource type="Texture2D" uid="uid://dljjkv1mcg0i3" path="res://icon.svg" id="1_3qncy"]
+[ext_resource type="Script" path="res://scripts/test_character.gd" id="1_cbyh3"]
+
+[node name="Test Character" type="Node2D"]
+position = Vector2(170, 216)
+script = ExtResource("1_cbyh3")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_3qncy")
+
+[node name="NavigationAgent" type="NavigationAgent2D" parent="."]
+unique_name_in_owner = true
+debug_enabled = true
