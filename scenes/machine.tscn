@@ -43,6 +43,7 @@ script = ExtResource("1_75l57")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_tycfr")
+autoplay = "default"
 
 [node name="Slots" type="Node2D" parent="."]
 unique_name_in_owner = true

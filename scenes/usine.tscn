@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://bbmfrvkiohwg5"]
+[gd_scene load_steps=30 format=3 uid="uid://bbmfrvkiohwg5"]
 
 [ext_resource type="Texture2D" uid="uid://d1yex5ybh0fw6" path="res://assets/sprites/machines/machineA/machineA_00000.png" id="1_f2j7j"]
 [ext_resource type="Script" path="res://scripts/MachineA.gd" id="1_l6med"]
@@ -20,6 +20,8 @@
 [ext_resource type="Script" path="res://scenes/TextureProgressBar.gd" id="19_w50jk"]
 [ext_resource type="PackedScene" uid="uid://dlqjic7y2rfkq" path="res://scenes/vfx/text_effect.tscn" id="20_8gw2c"]
 [ext_resource type="Texture2D" uid="uid://bxpuql1i1j6n3" path="res://assets/sprites/usine/usine_layout.png" id="23_8vdtw"]
+[ext_resource type="Script" path="res://scenes/Profit.gd" id="24_vxwht"]
+[ext_resource type="AudioStream" uid="uid://dngqbom8v6ejb" path="res://assets/sfx/profit.wav" id="25_elqy2"]
 [ext_resource type="PackedScene" uid="uid://bdfy2r4dblv5p" path="res://scenes/machine.tscn" id="25_t0uso"]
 [ext_resource type="PackedScene" uid="uid://b8n0jndurkhb1" path="res://scenes/machineA.tscn" id="26_uqcj8"]
 [ext_resource type="PackedScene" uid="uid://el5tjscnme0r" path="res://scenes/broyeuse.tscn" id="27_uthxa"]
@@ -134,10 +136,12 @@ stream = ExtResource("16_feel5")
 position = Vector2(1084, -846)
 
 [node name="Machine2" parent="." instance=ExtResource("26_uqcj8")]
+visible = false
 position = Vector2(1479, -846)
 machine_type = 1
 
 [node name="Machine3" parent="." instance=ExtResource("27_uthxa")]
+visible = false
 position = Vector2(2009, -856)
 machine_type = 2
 
@@ -145,6 +149,17 @@ machine_type = 2
 z_index = -1
 position = Vector2(1657, -548)
 texture = ExtResource("23_8vdtw")
+
+[node name="Profit" type="Node2D" parent="."]
+position = Vector2(858, -162)
+script = ExtResource("24_vxwht")
+
+[node name="profitSFX" type="AudioStreamPlayer2D" parent="Profit"]
+stream = ExtResource("25_elqy2")
+
+[node name="profitLabel" type="RichTextLabel" parent="Profit"]
+offset_right = 40.0
+offset_bottom = 40.0
 
 [connection signal="input_event" from="MachineA" to="MachineA" method="_on_input_event"]
 [connection signal="input_event" from="MachineB" to="MachineB" method="_on_input_event"]
