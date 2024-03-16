@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://bbmfrvkiohwg5"]
+[gd_scene load_steps=24 format=3 uid="uid://bbmfrvkiohwg5"]
 
 [ext_resource type="Texture2D" uid="uid://d1yex5ybh0fw6" path="res://assets/sprites/machines/machineA/machineA_00000.png" id="1_f2j7j"]
 [ext_resource type="Script" path="res://scripts/MachineA.gd" id="1_l6med"]
@@ -13,6 +13,8 @@
 [ext_resource type="Texture2D" uid="uid://bij7c3dboeppd" path="res://assets/sprites/machines/machineB/machineB_00003.png" id="11_yhn1e"]
 [ext_resource type="Texture2D" uid="uid://cllt6xquowf7k" path="res://assets/sprites/machines/machineB/machineB_00004.png" id="12_3eafk"]
 [ext_resource type="Texture2D" uid="uid://fbd5ly4hjdhj" path="res://assets/sprites/machines/machineB/machineB_00005.png" id="13_8hmjw"]
+[ext_resource type="Script" path="res://scripts/michel.gd" id="14_52xnb"]
+[ext_resource type="Texture2D" uid="uid://ioalijcxr8jw" path="res://assets/sprites/michel/michel.png" id="15_hxnjw"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_v54bu"]
 size = Vector2(338, 326)
@@ -72,6 +74,72 @@ animations = [{
 "speed": 12.0
 }]
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_u3v2u"]
+radius = 23.0
+height = 70.0
+
+[sub_resource type="Animation" id="Animation_qni6p"]
+resource_name = "walking"
+length = 0.2
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -20), Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1.05, 0.95), Vector2(0.95, 1.05), Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_1b8fu"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1kthv"]
+_data = {
+"RESET": SubResource("Animation_1b8fu"),
+"walking": SubResource("Animation_qni6p")
+}
+
 [node name="Usine" type="Node2D"]
 
 [node name="MachineA" type="Area2D" parent="."]
@@ -96,6 +164,21 @@ shape = SubResource("RectangleShape2D_ritsi")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="MachineB"]
 sprite_frames = SubResource("SpriteFrames_87e42")
 autoplay = "default"
+
+[node name="michel" type="CharacterBody2D" parent="."]
+position = Vector2(85, 547)
+script = ExtResource("14_52xnb")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="michel"]
+shape = SubResource("CapsuleShape2D_u3v2u")
+
+[node name="Sprite2D" type="Sprite2D" parent="michel"]
+texture = ExtResource("15_hxnjw")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="michel"]
+libraries = {
+"": SubResource("AnimationLibrary_1kthv")
+}
 
 [connection signal="input_event" from="MachineA" to="MachineA" method="_on_input_event"]
 [connection signal="input_event" from="MachineB" to="MachineB" method="_on_input_event"]
