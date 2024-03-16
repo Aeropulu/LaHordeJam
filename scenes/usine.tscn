@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://bbmfrvkiohwg5"]
+[gd_scene load_steps=34 format=3 uid="uid://bbmfrvkiohwg5"]
 
 [ext_resource type="Texture2D" uid="uid://d1yex5ybh0fw6" path="res://assets/sprites/machines/machineA/machineA_00000.png" id="1_f2j7j"]
 [ext_resource type="Script" path="res://scripts/MachineA.gd" id="1_l6med"]
@@ -7,18 +7,23 @@
 [ext_resource type="Texture2D" uid="uid://b21ib1prb6d7h" path="res://assets/sprites/machines/machineA/machineA_00003.png" id="4_cyo6l"]
 [ext_resource type="Texture2D" uid="uid://byaa08ac851nc" path="res://assets/sprites/machines/machineA/machineA_00004.png" id="5_w3smi"]
 [ext_resource type="Texture2D" uid="uid://djxo08lopxjfu" path="res://assets/sprites/machines/machineA/machineA_00005.png" id="6_0pmqx"]
-[ext_resource type="Texture2D" uid="uid://es6qcw4j2o5y" path="res://assets/sprites/machines/machineB/machineB_00000.png" id="8_w877t"]
-[ext_resource type="Texture2D" uid="uid://2jrftkq5m2mo" path="res://assets/sprites/machines/machineB/machineB_00001.png" id="9_c5v0q"]
-[ext_resource type="Texture2D" uid="uid://ct1lwl4qdexws" path="res://assets/sprites/machines/machineB/machineB_00002.png" id="10_u3a84"]
-[ext_resource type="Texture2D" uid="uid://bij7c3dboeppd" path="res://assets/sprites/machines/machineB/machineB_00003.png" id="11_yhn1e"]
-[ext_resource type="Texture2D" uid="uid://cllt6xquowf7k" path="res://assets/sprites/machines/machineB/machineB_00004.png" id="12_3eafk"]
-[ext_resource type="Texture2D" uid="uid://fbd5ly4hjdhj" path="res://assets/sprites/machines/machineB/machineB_00005.png" id="13_8hmjw"]
+[ext_resource type="Texture2D" uid="uid://jpo2hwr74nr0" path="res://assets/sprites/machines/broyeuse/broyeuse_00000.png" id="8_gs7cu"]
+[ext_resource type="Texture2D" uid="uid://t535hao4re63" path="res://assets/sprites/machines/broyeuse/broyeuse_00001.png" id="9_b8bgt"]
+[ext_resource type="Texture2D" uid="uid://brropyctk43ky" path="res://assets/sprites/machines/broyeuse/broyeuse_00002.png" id="10_l1j13"]
+[ext_resource type="Texture2D" uid="uid://cdvu66dthshm6" path="res://assets/sprites/machines/broyeuse/broyeuse_00003.png" id="11_jdkp5"]
+[ext_resource type="Texture2D" uid="uid://bc4qsflf34i0c" path="res://assets/sprites/machines/broyeuse/broyeuse_00004.png" id="12_kbd6x"]
+[ext_resource type="Texture2D" uid="uid://df7hq4rwsw164" path="res://assets/sprites/machines/broyeuse/broyeuse_00005.png" id="13_su1aa"]
 [ext_resource type="Script" path="res://scripts/michel.gd" id="14_52xnb"]
 [ext_resource type="Texture2D" uid="uid://ioalijcxr8jw" path="res://assets/sprites/michel/michel.png" id="15_hxnjw"]
 [ext_resource type="AudioStream" uid="uid://b25qd31qd13mu" path="res://assets/music/Energy_Source_-_Radiation.ogg" id="16_feel5"]
 [ext_resource type="Texture2D" uid="uid://eenud47e0iot" path="res://assets/sprites/machines/barre place holder.png" id="17_syvym"]
 [ext_resource type="Texture2D" uid="uid://dp0stfmlebfxp" path="res://assets/sprites/machines/bar progress fill placeholder.png" id="18_8g0ub"]
+[ext_resource type="Texture2D" uid="uid://dphs5yeo0lubo" path="res://assets/sprites/michel/michel_work/michel_work00000.png" id="19_q0gfm"]
 [ext_resource type="Script" path="res://scenes/TextureProgressBar.gd" id="19_w50jk"]
+[ext_resource type="PackedScene" uid="uid://dlqjic7y2rfkq" path="res://scenes/vfx/text_effect.tscn" id="20_8gw2c"]
+[ext_resource type="Texture2D" uid="uid://v5bfs122w7q3" path="res://assets/sprites/michel/michel_work/michel_work00001.png" id="20_dnwa6"]
+[ext_resource type="Texture2D" uid="uid://b2ekrb6nec2mm" path="res://assets/sprites/michel/michel_work/michel_work00002.png" id="21_i3hpw"]
+[ext_resource type="Texture2D" uid="uid://8t7xgamd13uo" path="res://assets/sprites/michel/michel_work/michel_work00003.png" id="22_ry334"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_v54bu"]
 size = Vector2(338, 326)
@@ -56,22 +61,22 @@ size = Vector2(318, 328)
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("8_w877t")
+"texture": ExtResource("8_gs7cu")
 }, {
 "duration": 1.0,
-"texture": ExtResource("9_c5v0q")
+"texture": ExtResource("9_b8bgt")
 }, {
 "duration": 1.0,
-"texture": ExtResource("10_u3a84")
+"texture": ExtResource("10_l1j13")
 }, {
 "duration": 1.0,
-"texture": ExtResource("11_yhn1e")
+"texture": ExtResource("11_jdkp5")
 }, {
 "duration": 1.0,
-"texture": ExtResource("12_3eafk")
+"texture": ExtResource("12_kbd6x")
 }, {
 "duration": 1.0,
-"texture": ExtResource("13_8hmjw")
+"texture": ExtResource("13_su1aa")
 }],
 "loop": true,
 "name": &"default",
@@ -144,6 +149,26 @@ _data = {
 "walking": SubResource("Animation_qni6p")
 }
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_rlo3w"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("19_q0gfm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_dnwa6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_i3hpw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_ry334")
+}],
+"loop": true,
+"name": &"default",
+"speed": 12.0
+}]
+
 [node name="Usine" type="Node2D"]
 
 [node name="MachineA" type="Area2D" parent="."]
@@ -169,6 +194,20 @@ shape = SubResource("RectangleShape2D_ritsi")
 sprite_frames = SubResource("SpriteFrames_87e42")
 autoplay = "default"
 
+[node name="TextureProgressBar" type="TextureProgressBar" parent="MachineB"]
+offset_left = 90.0
+offset_top = 2.0
+offset_right = 130.0
+offset_bottom = 130.0
+fill_mode = 3
+texture_under = ExtResource("17_syvym")
+texture_over = ExtResource("17_syvym")
+texture_progress = ExtResource("18_8g0ub")
+script = ExtResource("19_w50jk")
+
+[node name="Timer" type="Timer" parent="MachineB/TextureProgressBar"]
+one_shot = true
+
 [node name="michel" type="CharacterBody2D" parent="."]
 position = Vector2(85, 547)
 script = ExtResource("14_52xnb")
@@ -184,23 +223,20 @@ libraries = {
 "": SubResource("AnimationLibrary_1kthv")
 }
 
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="michel"]
+visible = false
+sprite_frames = SubResource("SpriteFrames_rlo3w")
+autoplay = "default"
+frame_progress = 0.398033
+
 [node name="GameMusic" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("16_feel5")
 
-[node name="TextureProgressBar" type="TextureProgressBar" parent="."]
-offset_left = 24.0
-offset_top = 16.0
-offset_right = 64.0
-offset_bottom = 144.0
-fill_mode = 3
-texture_under = ExtResource("17_syvym")
-texture_over = ExtResource("17_syvym")
-texture_progress = ExtResource("18_8g0ub")
-script = ExtResource("19_w50jk")
-
-[node name="Timer" type="Timer" parent="TextureProgressBar"]
-one_shot = true
+[node name="TextEffect" parent="." instance=ExtResource("20_8gw2c")]
+modulate = Color(1, 1, 1, 1)
+position = Vector2(0, 0)
+scale = Vector2(1, 1)
 
 [connection signal="input_event" from="MachineA" to="MachineA" method="_on_input_event"]
 [connection signal="input_event" from="MachineB" to="MachineB" method="_on_input_event"]
-[connection signal="timeout" from="TextureProgressBar/Timer" to="TextureProgressBar" method="_on_timer_timeout"]
+[connection signal="timeout" from="MachineB/TextureProgressBar/Timer" to="MachineB/TextureProgressBar" method="_on_timer_timeout"]
