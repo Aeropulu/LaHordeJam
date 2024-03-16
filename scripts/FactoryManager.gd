@@ -13,7 +13,12 @@ var current_profit := 0 : set = set_current_profit
 var profit_objective := 0
 
 var _day_duration:float = 3.0
-var _remaining_day_time:float = 0.0
+var _remaining_day_time:float = 0.0 : set = set_remaining_day_time
+signal remaining_day_time_changed(new_value)
+
+var _current_speed_factor := 1.0 : set = set_speed_factor
+var _speed_factor_increment := 0.1
+signal speed_factor_changed
 
 signal profit_changed(new_value)
 
@@ -24,7 +29,6 @@ signal workers_in_place
 func _ready():
 	pass
 
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if _remaining_day_time > 0.0:
@@ -32,7 +36,15 @@ func _process(delta):
 	
 func set_current_profit(new_val):
 	current_profit = new_val
-	profit_changed.emit()
+	profit_changed.emit(new_val)
+	
+func set_speed_factor(new_val):
+	_current_speed_factor = new_val
+	speed_factor_changed.emit()
+
+func set_remaining_day_time(new_val):
+	_remaining_day_time = new_val
+	remaining_day_time_changed.emit(new_val)
 
 func add_machine(mach: Machine):
 	machines.append(mach)
@@ -119,6 +131,15 @@ func _check_defeat():
 		## SHOW defeat screen
 		pass
 	_can_start_day = true
+	
+func _on_machine_profit():
+	set_current_profit(current_profit + 100)
+	
+func _on_machine_time_accel():
+	_current_speed_factor += _speed_factor_increment
+	
+func _on_machine_crush_worker():
+	pass
 
 func _on_button_pressed():
 	spawn_workers(0.5)

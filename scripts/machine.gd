@@ -5,7 +5,8 @@ enum Machinetype { PROFIT, TIME, BROYEUSE }
 @export var machine_type: Machinetype
 var _worker_scene: PackedScene = preload("res://scenes/michel.tscn")
 
-@export var _cycle_duration: float = 1.0 : set = _set_cycle_duration
+@export var _base_cycle_duration := 1.0
+var _cycle_duration: float = 1.0
 var _current_worker: int = 0
 var _workers: Array[Michel]
 
@@ -27,10 +28,22 @@ signal work_stopped
 func _ready():
 	$AnimatedSprite2D.speed_scale = 0
 	FactoryManager.add_machine(self)
+	on_profit.connect(FactoryManager._on_machine_profit)
+	on_time_accel.connect(FactoryManager._on_machine_time_accel)
+	on_crush_worker.connect(FactoryManager._on_machine_crush_worker)
+	FactoryManager.speed_factor_changed.connect(_on_speed_factor_changed)
+	_cycle_duration = _base_cycle_duration / FactoryManager._current_speed_factor
+
+func _on_speed_factor_changed():
+	_cycle_duration = _base_cycle_duration / FactoryManager._current_speed_factor
+	if (_workers.size() != 0):
+		_time_per_worker = _cycle_duration / _workers.size()
+	if _is_working:
+		$AnimatedSprite2D.speed_scale = FactoryManager._current_speed_factor
 
 func _set_cycle_duration(new_value):
 	if (_cycle_duration != 0):
-		var ratio: float = new_value / _cycle_duration
+		var ratio: float = new_value / _base_cycle_duration
 		_time_to_next_worker *= ratio
 	_cycle_duration = new_value
 	if (_workers.size() != 0):
@@ -47,7 +60,7 @@ func start_work():
 	_is_working = true
 	for worker in _workers:
 		worker.start_work()
-	$AnimatedSprite2D.speed_scale = 1.0 / _cycle_duration
+	$AnimatedSprite2D.speed_scale = FactoryManager._current_speed_factor
 		
 func stop_work():
 	_is_working = false
@@ -97,8 +110,9 @@ func _add_worker(worker) -> bool:
 func _on_area_2d_input_event(_viewport, event, _shape_idx):
 	if event is InputEventMouseButton and event.pressed:
 		if event.button_mask & 2 == 2:
-			_set_cycle_duration(_cycle_duration * 0.9)
-			print("brrrrr")
+			# _set_cycle_duration(_cycle_duration * 0.9)
+			FactoryManager._on_machine_time_accel()
+			print(FactoryManager._current_speed_factor)
 		else:
 			set_slot_count(_slot_count + 1)
 			

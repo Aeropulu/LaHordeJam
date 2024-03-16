@@ -99,6 +99,9 @@ shape = SubResource("RectangleShape2D_0nvue")
 [node name="Machine2" type="Node2D" parent="."]
 position = Vector2(250, 204)
 script = ExtResource("2_8tml0")
+machine_type = 1
+_base_cycle_duration = 0.5
+_slot_count = 3
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Machine2"]
 sprite_frames = SubResource("SpriteFrames_bgj8i")
