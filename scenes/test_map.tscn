@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://c7hn62h8pcahw"]
+[gd_scene load_steps=4 format=3 uid="uid://c7hn62h8pcahw"]
 
 [ext_resource type="PackedScene" uid="uid://cec4k5onneoq3" path="res://scenes/test_character.tscn" id="1_iylm7"]
+[ext_resource type="Script" path="res://scripts/machine.gd" id="2_8tml0"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_yihpj"]
 vertices = PackedVector2Array(597, 94, 1039, 98, 1065, 605, 615, 594, 598, 369, 597, 313, 518, 367, 517, 589, 85, 593, 107, 75, 517, 314, 517, 98)
@@ -11,6 +12,11 @@ source_geometry_group_name = &"navigation_polygon_source_group"
 [node name="Test Map" type="Node2D"]
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+position = Vector2(-15, -21)
 navigation_polygon = SubResource("NavigationPolygon_yihpj")
 
 [node name="Test Character" parent="." instance=ExtResource("1_iylm7")]
+position = Vector2(0, 216)
+
+[node name="Machine" type="Node2D" parent="."]
+script = ExtResource("2_8tml0")
