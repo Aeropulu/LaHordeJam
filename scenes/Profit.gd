@@ -2,13 +2,12 @@ extends Node2D
 
 var global_profit = 1000
 
+var _profit_effect: PackedScene = preload("res://scenes/vfx/profit_effect.tscn")
+
 func generate_profit(profit):
-	#VFX
-	
-	
-	#SFX
-	$profitSFX.play()
-	
+	#Create effect
+	var dollar = _profit_effect.instantiate()
+	add_child(dollar)
 	#GLOBAl SCORE
 	global_profit += profit
 	$profitLabel.text = str(global_profit)

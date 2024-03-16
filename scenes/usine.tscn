@@ -247,10 +247,12 @@ stream = ExtResource("16_feel5")
 position = Vector2(389, 239)
 
 [node name="Machine2" parent="." instance=ExtResource("26_uqcj8")]
+visible = false
 position = Vector2(835, 239)
 machine_type = 1
 
 [node name="Machine3" parent="." instance=ExtResource("27_uthxa")]
+visible = false
 position = Vector2(1297, 271)
 machine_type = 2
 
