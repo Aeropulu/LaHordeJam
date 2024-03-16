@@ -1,7 +1,12 @@
-[gd_scene load_steps=4 format=3 uid="uid://c7hn62h8pcahw"]
+[gd_scene load_steps=11 format=3 uid="uid://c7hn62h8pcahw"]
 
-[ext_resource type="PackedScene" uid="uid://cec4k5onneoq3" path="res://scenes/test_character.tscn" id="1_iylm7"]
+[ext_resource type="Texture2D" uid="uid://es6qcw4j2o5y" path="res://assets/sprites/machines/machineB/machineB_00000.png" id="2_4qcv0"]
 [ext_resource type="Script" path="res://scripts/machine.gd" id="2_8tml0"]
+[ext_resource type="Texture2D" uid="uid://2jrftkq5m2mo" path="res://assets/sprites/machines/machineB/machineB_00001.png" id="3_lqki1"]
+[ext_resource type="Texture2D" uid="uid://ct1lwl4qdexws" path="res://assets/sprites/machines/machineB/machineB_00002.png" id="4_8y2fk"]
+[ext_resource type="Texture2D" uid="uid://bij7c3dboeppd" path="res://assets/sprites/machines/machineB/machineB_00003.png" id="5_sote0"]
+[ext_resource type="Texture2D" uid="uid://cllt6xquowf7k" path="res://assets/sprites/machines/machineB/machineB_00004.png" id="6_rhb8y"]
+[ext_resource type="Texture2D" uid="uid://fbd5ly4hjdhj" path="res://assets/sprites/machines/machineB/machineB_00005.png" id="7_6lqyp"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_yihpj"]
 vertices = PackedVector2Array(597, 94, 1039, 98, 1065, 605, 615, 594, 598, 369, 597, 313, 518, 367, 517, 589, 85, 593, 107, 75, 517, 314, 517, 98)
@@ -9,14 +14,74 @@ polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3, 4, 5), PackedIn
 outlines = Array[PackedVector2Array]([PackedVector2Array(98, 65, 528, 89, 527, 304, 587, 303, 587, 84, 1049, 89, 1076, 616, 606, 604, 589, 379, 528, 377, 527, 599, 75, 604)])
 source_geometry_group_name = &"navigation_polygon_source_group"
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_bgj8i"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_4qcv0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_lqki1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_8y2fk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_sote0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_rhb8y")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_6lqyp")
+}],
+"loop": true,
+"name": &"default",
+"speed": 12.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0nvue"]
+size = Vector2(309, 306)
+
 [node name="Test Map" type="Node2D"]
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
-position = Vector2(-15, -21)
+position = Vector2(465, -37)
 navigation_polygon = SubResource("NavigationPolygon_yihpj")
 
-[node name="Test Character" parent="." instance=ExtResource("1_iylm7")]
-position = Vector2(0, 216)
-
 [node name="Machine" type="Node2D" parent="."]
+position = Vector2(305, 420)
 script = ExtResource("2_8tml0")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Machine"]
+sprite_frames = SubResource("SpriteFrames_bgj8i")
+autoplay = "default"
+
+[node name="Slots" type="Node2D" parent="Machine"]
+unique_name_in_owner = true
+
+[node name="1" type="Node2D" parent="Machine/Slots"]
+position = Vector2(102, 21)
+
+[node name="2" type="Node2D" parent="Machine/Slots"]
+position = Vector2(-13, -92)
+
+[node name="3" type="Node2D" parent="Machine/Slots"]
+position = Vector2(-189, 1)
+
+[node name="4" type="Node2D" parent="Machine/Slots"]
+position = Vector2(0, 212)
+
+[node name="5" type="Node2D" parent="Machine/Slots"]
+position = Vector2(-86, 207)
+
+[node name="6" type="Node2D" parent="Machine/Slots"]
+position = Vector2(-194, -97)
+
+[node name="Area2D" type="Area2D" parent="Machine"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Machine/Area2D"]
+position = Vector2(0.5, 6)
+shape = SubResource("RectangleShape2D_0nvue")
+
+[connection signal="input_event" from="Machine/Area2D" to="Machine" method="_on_area_2d_input_event"]
