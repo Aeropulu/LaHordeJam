@@ -35,9 +35,11 @@ func spawn_workers(time: float):
 	var delay: float = time / worker_count
 	for machine in machines:
 		for i in range(machine._slot_count):
+			print(machine.global_position)
 			var slot = machine.get_slot(i)
 			if slot is Node2D:
 				slots.append(slot)
+			print(slot.get_parent().global_position)
 			var worker: Michel = _worker_scene.instantiate()
 			workers.append(worker)
 			worker.global_position = global_position
@@ -45,7 +47,7 @@ func spawn_workers(time: float):
 			machine._add_worker(worker)
 			worker.target_slot = slot
 			worker.door_pos = global_position
-			worker.go_to_slot(delay * 2)
+			worker.go_to_slot(time)
 			worker.in_place.connect(_check_workers_in_place, CONNECT_ONE_SHOT)
 			await get_tree().create_timer(delay).timeout
 	workers_spawned.emit()
@@ -57,6 +59,7 @@ func _check_workers_in_place():
 			all_in_place = false
 	if all_in_place:
 		workers_in_place.emit()
+		await get_tree().create_timer(1.0).timeout
 		start_work()
 
 func start_work():

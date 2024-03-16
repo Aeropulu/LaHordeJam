@@ -99,6 +99,7 @@ script = ExtResource("1_5mdh5")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_u3v2u")
+disabled = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 visible = false
