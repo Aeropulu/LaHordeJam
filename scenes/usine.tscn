@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://boqd2i8rdv6k8"]
+[gd_scene load_steps=28 format=3 uid="uid://bbmfrvkiohwg5"]
 
 [ext_resource type="Texture2D" uid="uid://d1yex5ybh0fw6" path="res://assets/sprites/machines/machineA/machineA_00000.png" id="1_f2j7j"]
 [ext_resource type="Script" path="res://scripts/MachineA.gd" id="1_l6med"]
@@ -15,6 +15,10 @@
 [ext_resource type="Texture2D" uid="uid://fbd5ly4hjdhj" path="res://assets/sprites/machines/machineB/machineB_00005.png" id="13_8hmjw"]
 [ext_resource type="Script" path="res://scripts/michel.gd" id="14_52xnb"]
 [ext_resource type="Texture2D" uid="uid://ioalijcxr8jw" path="res://assets/sprites/michel/michel.png" id="15_hxnjw"]
+[ext_resource type="AudioStream" uid="uid://b25qd31qd13mu" path="res://assets/music/Energy_Source_-_Radiation.ogg" id="16_feel5"]
+[ext_resource type="Texture2D" uid="uid://eenud47e0iot" path="res://assets/sprites/machines/barre place holder.png" id="17_syvym"]
+[ext_resource type="Texture2D" uid="uid://dp0stfmlebfxp" path="res://assets/sprites/machines/bar progress fill placeholder.png" id="18_8g0ub"]
+[ext_resource type="Script" path="res://scenes/TextureProgressBar.gd" id="19_w50jk"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_v54bu"]
 size = Vector2(338, 326)
@@ -78,33 +82,6 @@ animations = [{
 radius = 23.0
 height = 70.0
 
-[sub_resource type="Animation" id="Animation_1b8fu"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite2D:scale")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1, 1)]
-}
-
 [sub_resource type="Animation" id="Animation_qni6p"]
 resource_name = "walking"
 length = 0.2
@@ -132,6 +109,33 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [Vector2(1.05, 0.95), Vector2(0.95, 1.05), Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_1b8fu"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_1kthv"]
@@ -180,5 +184,23 @@ libraries = {
 "": SubResource("AnimationLibrary_1kthv")
 }
 
+[node name="GameMusic" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("16_feel5")
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="."]
+offset_left = 24.0
+offset_top = 16.0
+offset_right = 64.0
+offset_bottom = 144.0
+fill_mode = 3
+texture_under = ExtResource("17_syvym")
+texture_over = ExtResource("17_syvym")
+texture_progress = ExtResource("18_8g0ub")
+script = ExtResource("19_w50jk")
+
+[node name="Timer" type="Timer" parent="TextureProgressBar"]
+one_shot = true
+
 [connection signal="input_event" from="MachineA" to="MachineA" method="_on_input_event"]
 [connection signal="input_event" from="MachineB" to="MachineB" method="_on_input_event"]
+[connection signal="timeout" from="TextureProgressBar/Timer" to="TextureProgressBar" method="_on_timer_timeout"]
