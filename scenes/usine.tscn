@@ -1,4 +1,4 @@
-[gd_scene load_steps=62 format=3 uid="uid://bbmfrvkiohwg5"]
+[gd_scene load_steps=64 format=3 uid="uid://bbmfrvkiohwg5"]
 
 [ext_resource type="Texture2D" uid="uid://d1yex5ybh0fw6" path="res://assets/sprites/machines/machineA/machineA_00000.png" id="1_f2j7j"]
 [ext_resource type="Script" path="res://scripts/MachineA.gd" id="1_l6med"]
@@ -21,6 +21,7 @@
 [ext_resource type="PackedScene" uid="uid://dlqjic7y2rfkq" path="res://scenes/vfx/text_effect.tscn" id="20_8gw2c"]
 [ext_resource type="Texture2D" uid="uid://d3a6tvedd7x5e" path="res://assets/sprites/usine/usine_layout_.png" id="23_r66r1"]
 [ext_resource type="Script" path="res://scenes/Profit.gd" id="24_vxwht"]
+[ext_resource type="PackedScene" uid="uid://chr8ktkq33kv5" path="res://scenes/machineC.tscn" id="24_w07ob"]
 [ext_resource type="PackedScene" uid="uid://bdfy2r4dblv5p" path="res://scenes/machine.tscn" id="25_t0uso"]
 [ext_resource type="Script" path="res://scenes/Horloge.gd" id="26_d54fv"]
 [ext_resource type="PackedScene" uid="uid://b8n0jndurkhb1" path="res://scenes/machineA.tscn" id="26_uqcj8"]
@@ -54,6 +55,7 @@
 [ext_resource type="Texture2D" uid="uid://bnihiejo1jstw" path="res://assets/sprites/UI/market/market00009.png" id="53_xhokx"]
 [ext_resource type="Texture2D" uid="uid://cwpx315xj1umg" path="res://assets/sprites/UI/market/market00010.png" id="54_4tftg"]
 [ext_resource type="Script" path="res://scenes/Camera2D.gd" id="54_r10u0"]
+[ext_resource type="PackedScene" uid="uid://jnvnm53adtoi" path="res://scenes/machineB.tscn" id="55_lhpfv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_v54bu"]
 size = Vector2(338, 326)
@@ -254,7 +256,7 @@ position = Vector2(835, 239)
 machine_type = 1
 
 [node name="Machine3" parent="." instance=ExtResource("27_uthxa")]
-position = Vector2(1297, 579)
+position = Vector2(1332, 438)
 machine_type = 2
 
 [node name="TextureProgressBar" type="TextureProgressBar" parent="Machine3"]
@@ -271,6 +273,12 @@ metadata/_edit_use_anchors_ = true
 
 [node name="Timer" type="Timer" parent="Machine3/TextureProgressBar"]
 one_shot = true
+
+[node name="Machine4" parent="." instance=ExtResource("55_lhpfv")]
+position = Vector2(355, 634)
+
+[node name="Machine5" parent="." instance=ExtResource("24_w07ob")]
+position = Vector2(845, 625)
 
 [node name="Background" type="Sprite2D" parent="."]
 z_index = -1

@@ -1,0 +1,83 @@
+[gd_scene load_steps=15 format=3 uid="uid://jnvnm53adtoi"]
+
+[ext_resource type="PackedScene" uid="uid://bdfy2r4dblv5p" path="res://scenes/machine.tscn" id="1_xb1s0"]
+[ext_resource type="Texture2D" uid="uid://cg4b6by64flxi" path="res://assets/sprites/machines/machineC/machineC_00000.png" id="2_2muvl"]
+[ext_resource type="Texture2D" uid="uid://dklh8y7xuufmj" path="res://assets/sprites/machines/machineC/machineC_00001.png" id="3_0vom7"]
+[ext_resource type="Texture2D" uid="uid://nd7k561mc281" path="res://assets/sprites/machines/machineC/machineC_00002.png" id="4_2hhjl"]
+[ext_resource type="Texture2D" uid="uid://deqd1imv6uok0" path="res://assets/sprites/machines/machineC/machineC_00003.png" id="5_lpo13"]
+[ext_resource type="Texture2D" uid="uid://dtij7v62yaarr" path="res://assets/sprites/machines/machineC/machineC_00004.png" id="6_524pg"]
+[ext_resource type="Texture2D" uid="uid://kkbqihlbm6yt" path="res://assets/sprites/machines/machineC/machineC_00005.png" id="7_mlreo"]
+[ext_resource type="Texture2D" uid="uid://f23dmx7udb34" path="res://assets/sprites/machines/machineC/machineC_00006.png" id="8_2sjq4"]
+[ext_resource type="Texture2D" uid="uid://oc6ulkc6utg0" path="res://assets/sprites/machines/machineC/machineC_00007.png" id="9_rnb05"]
+[ext_resource type="Texture2D" uid="uid://cjf035bfbn6ph" path="res://assets/sprites/machines/machineC/machineC_00008.png" id="10_6inan"]
+[ext_resource type="Texture2D" uid="uid://ddbqg6i5sit3x" path="res://assets/sprites/machines/machineC/machineC_00009.png" id="11_oyhon"]
+[ext_resource type="Texture2D" uid="uid://bhe4mifl0e137" path="res://assets/sprites/machines/machineC/machineC_00010.png" id="12_07fgf"]
+[ext_resource type="Texture2D" uid="uid://b537oml6iecm1" path="res://assets/sprites/machines/machineC/machineC_00011.png" id="13_cux4y"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_bqrcp"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_2muvl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_0vom7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_2hhjl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_lpo13")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_524pg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_mlreo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_2sjq4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_rnb05")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_6inan")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_oyhon")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_07fgf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_cux4y")
+}],
+"loop": true,
+"name": &"default",
+"speed": 12.0
+}]
+
+[node name="Machine" instance=ExtResource("1_xb1s0")]
+
+[node name="AnimatedSprite2D" parent="." index="0"]
+sprite_frames = SubResource("SpriteFrames_bqrcp")
+frame_progress = 0.894163
+
+[node name="1" parent="Slots" index="0"]
+position = Vector2(141, -137)
+
+[node name="2" parent="Slots" index="1"]
+position = Vector2(143, 36)
+
+[node name="3" parent="Slots" index="2"]
+position = Vector2(-133, 141)
+
+[node name="4" parent="Slots" index="3"]
+position = Vector2(16, 32)
+
+[node name="5" parent="Slots" index="4"]
+position = Vector2(-139, -34)
+
+[node name="6" parent="Slots" index="5"]
+position = Vector2(-7, -43)

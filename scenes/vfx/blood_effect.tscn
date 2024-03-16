@@ -44,3 +44,4 @@ scale_amount_max = 8.0
 color_ramp = SubResource("Gradient_diwqp")
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="finished" from="blood" to="." method="_on_blood_finished"]
