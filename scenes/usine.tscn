@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=3 uid="uid://bbmfrvkiohwg5"]
+[gd_scene load_steps=62 format=3 uid="uid://bbmfrvkiohwg5"]
 
 [ext_resource type="Texture2D" uid="uid://d1yex5ybh0fw6" path="res://assets/sprites/machines/machineA/machineA_00000.png" id="1_f2j7j"]
 [ext_resource type="Script" path="res://scripts/MachineA.gd" id="1_l6med"]
@@ -29,6 +29,7 @@
 [ext_resource type="PackedScene" uid="uid://el5tjscnme0r" path="res://scenes/broyeuse.tscn" id="27_uthxa"]
 [ext_resource type="Texture2D" uid="uid://qksd5hwth1wt" path="res://assets/sprites/UI/hand.png" id="28_fnqka"]
 [ext_resource type="Texture2D" uid="uid://djp7y4vqdng4k" path="res://assets/sprites/UI/pointeuse/pointeuse.png" id="29_blibx"]
+[ext_resource type="Script" path="res://scenes/Pointeuse.gd" id="29_k2v45"]
 [ext_resource type="Texture2D" uid="uid://ugunavtyvgie" path="res://assets/sprites/UI/pointeuse/pointeuse00000.png" id="30_1dcjx"]
 [ext_resource type="Texture2D" uid="uid://b2ny0xtsy7bvm" path="res://assets/sprites/UI/pointeuse/pointeuse00001.png" id="31_mauqa"]
 [ext_resource type="Texture2D" uid="uid://betkqxxlpds6s" path="res://assets/sprites/UI/pointeuse/pointeuse00002.png" id="32_cj51w"]
@@ -39,6 +40,20 @@
 [ext_resource type="Texture2D" uid="uid://bmyg8a1ipl8ea" path="res://assets/sprites/UI/pointeuse/pointeuse00007.png" id="37_j0426"]
 [ext_resource type="Texture2D" uid="uid://cp24e7vnbwfob" path="res://assets/sprites/UI/pointeuse/pointeuse00008.png" id="38_y1u2f"]
 [ext_resource type="Texture2D" uid="uid://c72b5htqtcf8j" path="res://assets/sprites/UI/pointeuse/pointeuse00009.png" id="39_gmch1"]
+[ext_resource type="AudioStream" uid="uid://bdq8dsijce7u7" path="res://assets/sfx/47046__lonemonk__single-electric-typewriter-carriage-return.wav" id="41_5nb36"]
+[ext_resource type="AudioStream" uid="uid://rnxbe0wvcqeq" path="res://assets/sfx/611112__5ro4__bell-ding-2.wav" id="42_2puvo"]
+[ext_resource type="Texture2D" uid="uid://ccwkadeiwukm0" path="res://assets/sprites/UI/market/market.png" id="43_7ldwn"]
+[ext_resource type="Texture2D" uid="uid://bfpvwcmtbo0jp" path="res://assets/sprites/UI/market/market00000.png" id="44_28frl"]
+[ext_resource type="Texture2D" uid="uid://dvv14oqb8mpox" path="res://assets/sprites/UI/market/market00001.png" id="45_2yg47"]
+[ext_resource type="Texture2D" uid="uid://cim84eyb54l16" path="res://assets/sprites/UI/market/market00002.png" id="46_qmlrl"]
+[ext_resource type="Texture2D" uid="uid://brr4nbuas1x3g" path="res://assets/sprites/UI/market/market00003.png" id="47_wkt51"]
+[ext_resource type="Texture2D" uid="uid://bcisr56gvt6ga" path="res://assets/sprites/UI/market/market00004.png" id="48_yncsk"]
+[ext_resource type="Texture2D" uid="uid://c2cbi5c0nm08k" path="res://assets/sprites/UI/market/market00005.png" id="49_0nc4d"]
+[ext_resource type="Texture2D" uid="uid://0vhx5vcr72na" path="res://assets/sprites/UI/market/market00006.png" id="50_kgojq"]
+[ext_resource type="Texture2D" uid="uid://1h1in0elv23d" path="res://assets/sprites/UI/market/market00007.png" id="51_lne2w"]
+[ext_resource type="Texture2D" uid="uid://bsvcaxgf0rkfu" path="res://assets/sprites/UI/market/market00008.png" id="52_hseva"]
+[ext_resource type="Texture2D" uid="uid://bnihiejo1jstw" path="res://assets/sprites/UI/market/market00009.png" id="53_xhokx"]
+[ext_resource type="Texture2D" uid="uid://cwpx315xj1umg" path="res://assets/sprites/UI/market/market00010.png" id="54_4tftg"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_v54bu"]
 size = Vector2(338, 326)
@@ -136,6 +151,50 @@ animations = [{
 "speed": 12.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xcl7e"]
+size = Vector2(292, 324)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_maoun"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("44_28frl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("45_2yg47")
+}, {
+"duration": 1.0,
+"texture": ExtResource("46_qmlrl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("47_wkt51")
+}, {
+"duration": 1.0,
+"texture": ExtResource("48_yncsk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("49_0nc4d")
+}, {
+"duration": 1.0,
+"texture": ExtResource("50_kgojq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("51_lne2w")
+}, {
+"duration": 1.0,
+"texture": ExtResource("52_hseva")
+}, {
+"duration": 1.0,
+"texture": ExtResource("53_xhokx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("54_4tftg")
+}],
+"loop": true,
+"name": &"default",
+"speed": 6.0
+}]
+
 [node name="Usine" type="Node2D"]
 
 [node name="MachineA" type="Area2D" parent="."]
@@ -188,13 +247,11 @@ stream = ExtResource("16_feel5")
 position = Vector2(389, 239)
 
 [node name="Machine2" parent="." instance=ExtResource("26_uqcj8")]
-visible = false
-position = Vector2(1479, -846)
+position = Vector2(835, 239)
 machine_type = 1
 
 [node name="Machine3" parent="." instance=ExtResource("27_uthxa")]
-visible = false
-position = Vector2(2009, -856)
+position = Vector2(1297, 271)
 machine_type = 2
 
 [node name="Background" type="Sprite2D" parent="."]
@@ -203,7 +260,7 @@ position = Vector2(962, 537)
 texture = ExtResource("23_8vdtw")
 
 [node name="Profit" type="Node2D" parent="."]
-position = Vector2(650, 914)
+position = Vector2(1782, 262)
 script = ExtResource("24_vxwht")
 
 [node name="profitSFX" type="AudioStreamPlayer2D" parent="Profit"]
@@ -225,7 +282,8 @@ texture = ExtResource("28_fnqka")
 offset = Vector2(0, -32)
 
 [node name="Pointeuse" type="Node2D" parent="."]
-position = Vector2(1770, 870)
+position = Vector2(1770, 932)
+script = ExtResource("29_k2v45")
 
 [node name="background" type="Sprite2D" parent="Pointeuse"]
 texture = ExtResource("29_blibx")
@@ -237,8 +295,32 @@ sprite_frames = SubResource("SpriteFrames_6qc18")
 frame = 9
 frame_progress = 1.0
 
+[node name="Area2D" type="Area2D" parent="Pointeuse"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Pointeuse/Area2D"]
+shape = SubResource("RectangleShape2D_xcl7e")
+
+[node name="pointerSFX" type="AudioStreamPlayer2D" parent="Pointeuse"]
+stream = ExtResource("41_5nb36")
+
+[node name="ding" type="AudioStreamPlayer2D" parent="Pointeuse"]
+stream = ExtResource("42_2puvo")
+
+[node name="Market" type="Node2D" parent="."]
+position = Vector2(1783, 371)
+
+[node name="Sprite2D" type="Sprite2D" parent="Market"]
+texture = ExtResource("43_7ldwn")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Market"]
+sprite_frames = SubResource("SpriteFrames_maoun")
+autoplay = "default"
+frame_progress = 0.411369
+
 [connection signal="input_event" from="MachineA" to="MachineA" method="_on_input_event"]
 [connection signal="input_event" from="MachineB" to="MachineB" method="_on_input_event"]
 [connection signal="timeout" from="MachineB/TextureProgressBar/Timer" to="MachineB/TextureProgressBar" method="_on_timer_timeout"]
+[connection signal="animation_finished" from="Pointeuse/pointer" to="Pointeuse" method="_on_pointer_animation_finished"]
+[connection signal="input_event" from="Pointeuse/Area2D" to="Pointeuse" method="_on_area_2d_input_event"]
 
 [editable path="Machine"]

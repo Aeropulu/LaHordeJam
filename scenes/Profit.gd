@@ -20,6 +20,7 @@ func _ready():
 func _unhandled_input(event):
 	if event is InputEventMouseButton and event.pressed:
 		generate_profit(1000)
+		pass
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
