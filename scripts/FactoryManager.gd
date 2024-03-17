@@ -9,6 +9,8 @@ var workers: Array[Michel]
 var _worker_scene = preload("res://scenes/michel.tscn")
 var _can_start_day: bool = true
 
+var total_slot_count: int = 0
+
 var current_profit := 0 : set = set_current_profit
 var profit_objective := 0
 
@@ -25,9 +27,13 @@ signal profit_changed(new_value)
 signal workers_spawned
 signal workers_in_place
 
+signal day_end
+signal game_over
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass
+	for machine in machines:
+		total_slot_count += machine._slot_count
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -128,9 +134,10 @@ func _check_workers_left():
 		
 func _check_defeat():
 	if current_profit < profit_objective:
-		## SHOW defeat screen
+		game_over.emit()
 		pass
 	_can_start_day = true
+	day_end.emit()
 	
 func _on_machine_profit():
 	set_current_profit(current_profit + 100)

@@ -16,6 +16,10 @@ var _time_per_worker: float = 1.0
 var _time_to_next_worker: float = 1.0
 
 @export var _slot_count = 1
+signal slot_count_changed(new_count)
+signal slot_added
+signal slot_removed
+signal slot_change_error
 
 var _is_working:bool = false
 
@@ -94,13 +98,10 @@ func _remaining_workers() -> int:
 func _produce() -> void:
 	match machine_type:
 		Machinetype.PROFIT:
-			print("PROFIT")
 			on_profit.emit()
 		Machinetype.TIME:
-			print("GO FAST")
 			on_time_accel.emit()
 		Machinetype.BROYEUSE:
-			print("NOM NOM NOM")
 			on_crush_worker.emit()
 	
 func _add_worker(worker) -> bool:
@@ -120,8 +121,12 @@ func _on_area_2d_input_event(_viewport, event, _shape_idx):
 			set_slot_count(_slot_count + 1)
 			
 func set_slot_count(number:int):
-	number = clampi(number, 1, $Slots.get_child_count())
-	_slot_count = number
+	number = clampi(number, 0, $Slots.get_child_count())
+	if number != _slot_count:
+		_slot_count = number
+		slot_count_changed.emit(number)
+	else:
+		slot_change_error.emit()
 	print(number)
 
 func get_slot(index: int) -> Node2D:
@@ -129,3 +134,16 @@ func get_slot(index: int) -> Node2D:
 		return $Slots.get_child(index)
 	else:
 		return null
+
+func add_slot() -> void:
+	if _slot_count < $Slots.get_child_count():
+		set_slot_count(_slot_count + 1)
+		slot_added.emit()
+	else:
+		slot_change_error.emit()
+
+func remove_slot() -> void:
+	if _slot_count == 0:
+		slot_change_error.emit()
+		return
+	set_slot_count(_slot_count - 1)

@@ -85,7 +85,6 @@ func go_to_slot(time: float):
 	in_place.emit()
 	
 func go_home(time: float):
-	print("go_home")
 	var tween = get_tree().create_tween()
 	var michel: Michel = self
 	tween.tween_property(michel, "global_position", door_pos, time)
@@ -95,11 +94,9 @@ func go_home(time: float):
 
 func start_work():
 	working = true
-	print("work begun")
 	
 func stop_work():
 	working = false
-	print("work stopp")
 
 
 func begin_drag():
