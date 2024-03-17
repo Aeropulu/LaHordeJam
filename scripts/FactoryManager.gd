@@ -29,11 +29,11 @@ signal workers_in_place
 
 signal day_end
 signal game_over
+signal start_day_error
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	for machine in machines:
-		total_slot_count += machine._slot_count
+	pass
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -54,9 +54,14 @@ func set_remaining_day_time(new_val):
 
 func add_machine(mach: Machine):
 	machines.append(mach)
+	total_slot_count += mach._slot_count
 
 func spawn_workers(time: float):
 	if not _can_start_day:
+		return
+	
+	if total_slot_count <= 0:
+		start_day_error.emit()
 		return
 		
 	_can_start_day = false
@@ -69,11 +74,9 @@ func spawn_workers(time: float):
 	var delay: float = time / worker_count
 	for machine in machines:
 		for i in range(machine._slot_count):
-			print(machine.global_position)
 			var slot = machine.get_slot(i)
 			if slot is Node2D:
 				slots.append(slot)
-			print(slot.get_parent().global_position)
 			var worker: Michel = _worker_scene.instantiate()
 			workers.append(worker)
 			worker.global_position = global_position

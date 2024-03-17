@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://c7hn62h8pcahw"]
+[gd_scene load_steps=14 format=3 uid="uid://c7hn62h8pcahw"]
 
 [ext_resource type="Texture2D" uid="uid://es6qcw4j2o5y" path="res://assets/sprites/machines/machineB/machineB_00000.png" id="2_4qcv0"]
 [ext_resource type="Script" path="res://scripts/machine.gd" id="2_8tml0"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://bij7c3dboeppd" path="res://assets/sprites/machines/machineB/machineB_00003.png" id="5_sote0"]
 [ext_resource type="Texture2D" uid="uid://cllt6xquowf7k" path="res://assets/sprites/machines/machineB/machineB_00004.png" id="6_rhb8y"]
 [ext_resource type="Texture2D" uid="uid://fbd5ly4hjdhj" path="res://assets/sprites/machines/machineB/machineB_00005.png" id="7_6lqyp"]
+[ext_resource type="PackedScene" uid="uid://c7sw7grkvasu" path="res://scenes/UI/machine_ui.tscn" id="9_jrqsd"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_yihpj"]
 vertices = PackedVector2Array(597, 94, 1039, 98, 1065, 605, 615, 594, 598, 369, 597, 313, 518, 367, 517, 589, 85, 593, 107, 75, 517, 314, 517, 98)
@@ -139,6 +140,8 @@ offset_right = 8.0
 offset_bottom = 8.0
 text = "GO"
 script = SubResource("GDScript_1uui3")
+
+[node name="Machine UI" parent="." instance=ExtResource("9_jrqsd")]
 
 [connection signal="input_event" from="Machine/Area2D" to="Machine" method="_on_area_2d_input_event"]
 [connection signal="input_event" from="Machine2/Area2D" to="Machine2" method="_on_area_2d_input_event"]

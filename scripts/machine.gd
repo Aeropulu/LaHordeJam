@@ -114,11 +114,9 @@ func _add_worker(worker) -> bool:
 func _on_area_2d_input_event(_viewport, event, _shape_idx):
 	if event is InputEventMouseButton and event.pressed:
 		if event.button_mask & 2 == 2:
-			# _set_cycle_duration(_cycle_duration * 0.9)
-			FactoryManager._on_machine_time_accel()
-			print(FactoryManager._current_speed_factor)
+			remove_slot()
 		else:
-			set_slot_count(_slot_count + 1)
+			add_slot()
 			
 func set_slot_count(number:int):
 	number = clampi(number, 0, $Slots.get_child_count())
@@ -127,7 +125,6 @@ func set_slot_count(number:int):
 		slot_count_changed.emit(number)
 	else:
 		slot_change_error.emit()
-	print(number)
 
 func get_slot(index: int) -> Node2D:
 	if index <= min(_slot_count, $Slots.get_child_count()):
