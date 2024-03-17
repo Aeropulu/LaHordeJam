@@ -633,6 +633,8 @@ texture = ExtResource("29_blibx")
 [connection signal="pointeuse_finished" from="menu_manager/menu_config/Pointeuse" to="menu_manager" method="_on_pointeuse_pointeuse_finished"]
 [connection signal="animation_finished" from="menu_manager/menu_config/Pointeuse/pointer" to="menu_manager/menu_config/Pointeuse" method="_on_pointer_animation_finished"]
 [connection signal="input_event" from="menu_manager/menu_config/Pointeuse/Area2D" to="menu_manager/menu_config/Pointeuse" method="_on_area_2d_input_event"]
+[connection signal="pressed" from="menu_manager/menu_debriefing/next_day" to="menu_manager" method="_on_next_day_pressed"]
+[connection signal="pressed" from="menu_manager/menu_gameover/restart_game" to="menu_manager" method="_on_restart_game_pressed"]
 [connection signal="timeout" from="Machine3/TextureProgressBar/Timer" to="Machine3/TextureProgressBar" method="_on_timer_timeout"]
 
 [editable path="Machine"]

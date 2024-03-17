@@ -35,3 +35,11 @@ func on_day_end():
 	
 func on_game_over():
 	$menu_gameover.visible = true
+
+func _on_next_day_pressed():
+	$menu_debriefing.visible = false
+	$menu_briefing.visible = true
+
+
+func _on_restart_game_pressed():
+	get_tree().reload_current_scene()
