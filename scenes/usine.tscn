@@ -1,4 +1,4 @@
-[gd_scene load_steps=64 format=3 uid="uid://bbmfrvkiohwg5"]
+[gd_scene load_steps=65 format=3 uid="uid://bbmfrvkiohwg5"]
 
 [ext_resource type="Script" path="res://scripts/menu_manager.gd" id="1_30a5d"]
 [ext_resource type="Texture2D" uid="uid://5bydvgbkqt2x" path="res://assets/sprites/UI/menu_illustration.png" id="2_7o0cn"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://bhuc2c4d0m4tx" path="res://assets/sprites/UI/button_clicked.png" id="4_mrgjf"]
 [ext_resource type="PackedScene" uid="uid://doq8qwsed4ijd" path="res://scenes/vfx/profit_effect.tscn" id="5_2u55f"]
 [ext_resource type="Texture2D" uid="uid://brfo22x5nyq3p" path="res://assets/sprites/UI/button_hover.png" id="5_pskvd"]
+[ext_resource type="Texture2D" uid="uid://br1hcvjdfnshi" path="res://assets/sprites/UI/briefing_illustration.png" id="6_aqdi3"]
 [ext_resource type="AudioStream" uid="uid://b25qd31qd13mu" path="res://assets/music/Energy_Source_-_Radiation.ogg" id="16_feel5"]
 [ext_resource type="Texture2D" uid="uid://eenud47e0iot" path="res://assets/sprites/machines/barre place holder.png" id="17_syvym"]
 [ext_resource type="Texture2D" uid="uid://dp0stfmlebfxp" path="res://assets/sprites/machines/bar progress fill placeholder.png" id="18_8g0ub"]
@@ -267,7 +268,6 @@ scroll_active = false
 autowrap_mode = 0
 
 [node name="menu_briefing" type="CanvasLayer" parent="menu_manager"]
-visible = false
 
 [node name="ColorRect" type="ColorRect" parent="menu_manager/menu_briefing"]
 offset_right = 1920.0
@@ -275,6 +275,8 @@ offset_bottom = 1080.0
 color = Color(0, 0, 0, 1)
 
 [node name="Sprite2D" type="Sprite2D" parent="menu_manager/menu_briefing"]
+position = Vector2(960, 540)
+texture = ExtResource("6_aqdi3")
 
 [node name="launch_config" type="TextureButton" parent="menu_manager/menu_briefing"]
 offset_left = 1475.0
@@ -306,8 +308,7 @@ offset_left = 809.0
 offset_top = 364.0
 offset_right = 849.0
 offset_bottom = 404.0
-theme_override_constants/shadow_offset_x = 2
-theme_override_constants/shadow_offset_y = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/normal_font_size = 60
 text = "Day"
 fit_content = true
@@ -319,7 +320,7 @@ offset_left = 947.0
 offset_top = 366.0
 offset_right = 1015.0
 offset_bottom = 449.0
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/default_color = Color(0, 0, 0, 1)
 theme_override_constants/shadow_offset_x = 2
 theme_override_constants/shadow_offset_y = 2
 theme_override_font_sizes/normal_font_size = 60
@@ -333,7 +334,7 @@ offset_left = 634.0
 offset_top = 487.0
 offset_right = 764.0
 offset_bottom = 554.0
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/default_color = Color(0, 0, 0, 1)
 theme_override_constants/shadow_offset_x = 2
 theme_override_constants/shadow_offset_y = 2
 theme_override_font_sizes/normal_font_size = 48
@@ -347,7 +348,7 @@ offset_left = 772.0
 offset_top = 487.0
 offset_right = 972.0
 offset_bottom = 554.0
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/default_color = Color(0, 0, 0, 1)
 theme_override_constants/shadow_offset_x = 2
 theme_override_constants/shadow_offset_y = 2
 theme_override_font_sizes/normal_font_size = 48
@@ -361,7 +362,7 @@ offset_left = 636.0
 offset_top = 564.0
 offset_right = 824.0
 offset_bottom = 631.0
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/default_color = Color(0, 0, 0, 1)
 theme_override_constants/shadow_offset_x = 2
 theme_override_constants/shadow_offset_y = 2
 theme_override_font_sizes/normal_font_size = 48
@@ -371,11 +372,11 @@ scroll_active = false
 autowrap_mode = 0
 
 [node name="AgendaDescription" type="RichTextLabel" parent="menu_manager/menu_briefing"]
-offset_left = 652.0
-offset_top = 655.0
-offset_right = 1252.0
-offset_bottom = 1060.0
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+offset_left = 677.0
+offset_top = 654.0
+offset_right = 1277.0
+offset_bottom = 1059.0
+theme_override_colors/default_color = Color(0, 0, 0, 1)
 theme_override_constants/shadow_offset_x = 2
 theme_override_constants/shadow_offset_y = 2
 theme_override_font_sizes/normal_font_size = 32
@@ -647,13 +648,11 @@ position = Vector2(29, 144)
 [node name="Machine2" parent="." instance=ExtResource("26_uqcj8")]
 position = Vector2(835, 239)
 work_effect = ExtResource("5_2u55f")
-_base_cycle_duration = 1.3
 _slot_count = 0
 
 [node name="Machine6" parent="." instance=ExtResource("25_024x3")]
 position = Vector2(1307, 249)
 work_effect = ExtResource("5_2u55f")
-_base_cycle_duration = 1.5
 _slot_count = 0
 
 [node name="Machine3" parent="." instance=ExtResource("27_uthxa")]
