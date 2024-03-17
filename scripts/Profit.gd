@@ -6,6 +6,7 @@ func _ready():
 	
 func on_profit_change(new_profit):
 	$profitLabel.text = str(new_profit)
+	$AnimationPlayer.play("profitIncrease")
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass

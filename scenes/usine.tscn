@@ -1,4 +1,4 @@
-[gd_scene load_steps=54 format=3 uid="uid://bbmfrvkiohwg5"]
+[gd_scene load_steps=58 format=3 uid="uid://bbmfrvkiohwg5"]
 
 [ext_resource type="Script" path="res://scripts/menu_manager.gd" id="1_30a5d"]
 [ext_resource type="Texture2D" uid="uid://buhdrmfpdabjw" path="res://assets/sprites/UI/standard_bouton_normal_placeHolder.png" id="2_kdlnj"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://dp0stfmlebfxp" path="res://assets/sprites/machines/bar progress fill placeholder.png" id="18_8g0ub"]
 [ext_resource type="Script" path="res://scripts/TextureProgressBar.gd" id="19_w50jk"]
 [ext_resource type="PackedScene" uid="uid://dlqjic7y2rfkq" path="res://scenes/vfx/text_effect.tscn" id="20_8gw2c"]
+[ext_resource type="PackedScene" uid="uid://c7sw7grkvasu" path="res://scenes/UI/machine_ui.tscn" id="20_338g4"]
 [ext_resource type="Texture2D" uid="uid://d3a6tvedd7x5e" path="res://assets/sprites/usine/usine_layout_.png" id="23_r66r1"]
 [ext_resource type="Script" path="res://scripts/Profit.gd" id="24_vxwht"]
 [ext_resource type="PackedScene" uid="uid://chr8ktkq33kv5" path="res://scenes/machineC.tscn" id="24_w07ob"]
@@ -113,6 +114,67 @@ length = 0.001
 _data = {
 "RESET": SubResource("Animation_qqe6h"),
 "labelAnimation": SubResource("Animation_tcyd1")
+}
+
+[sub_resource type="Animation" id="Animation_1qyie"]
+resource_name = "profitIncrease"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(0.886275, 0.658824, 0, 1), Color(0.984314, 1, 0, 1), Color(1, 0, 0, 1), Color(0, 0, 0, 1), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.2, 1.2), Vector2(1, 1), Vector2(0.8, 0.8), Vector2(1, 1), Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_n5rcv"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_yxm24"]
+_data = {
+"RESET": SubResource("Animation_n5rcv"),
+"profitIncrease": SubResource("Animation_1qyie")
 }
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_maoun"]
@@ -230,11 +292,18 @@ stream = ExtResource("41_5nb36")
 [node name="ding" type="AudioStreamPlayer2D" parent="menu_manager/menu_config/Pointeuse"]
 stream = ExtResource("42_2puvo")
 
+[node name="Machine UI" parent="menu_manager/menu_config" node_paths=PackedStringArray("machine") instance=ExtResource("20_338g4")]
+offset_left = 398.0
+offset_top = 87.2119
+offset_right = 586.0
+offset_bottom = 160.212
+machine = NodePath("../../../Machine")
+
 [node name="profit_machine" type="RichTextLabel" parent="menu_manager/menu_config"]
 offset_left = 184.0
-offset_top = 32.9753
+offset_top = 32.7719
 offset_right = 504.0
-offset_bottom = 132.975
+offset_bottom = 132.771
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_constants/shadow_offset_x = 2
 theme_override_constants/shadow_offset_y = 2
@@ -246,6 +315,13 @@ scroll_active = false
 libraries = {
 "": SubResource("AnimationLibrary_eatow")
 }
+
+[node name="Machine UI2" parent="menu_manager/menu_config" node_paths=PackedStringArray("machine") instance=ExtResource("20_338g4")]
+offset_left = 909.0
+offset_top = 87.2119
+offset_right = 1097.0
+offset_bottom = 160.212
+machine = NodePath("../../../Machine2")
 
 [node name="profit_machine2" type="RichTextLabel" parent="menu_manager/menu_config"]
 offset_left = 684.0
@@ -259,6 +335,13 @@ theme_override_font_sizes/normal_font_size = 36
 text = "PROFIT MACHINE"
 scroll_active = false
 
+[node name="Machine UI3" parent="menu_manager/menu_config" node_paths=PackedStringArray("machine") instance=ExtResource("20_338g4")]
+offset_left = 1386.0
+offset_top = 87.2119
+offset_right = 1574.0
+offset_bottom = 160.212
+machine = NodePath("../../../Machine6")
+
 [node name="profit_machine3" type="RichTextLabel" parent="menu_manager/menu_config"]
 offset_left = 1163.0
 offset_top = 30.0
@@ -271,6 +354,13 @@ theme_override_font_sizes/normal_font_size = 36
 text = "PROFIT MACHINE"
 scroll_active = false
 
+[node name="Machine UI4" parent="menu_manager/menu_config" node_paths=PackedStringArray("machine") instance=ExtResource("20_338g4")]
+offset_left = 430.0
+offset_top = 477.0
+offset_right = 618.0
+offset_bottom = 550.0
+machine = NodePath("../../../Machine4")
+
 [node name="profit_machine4" type="RichTextLabel" parent="menu_manager/menu_config"]
 offset_left = 189.0
 offset_top = 426.0
@@ -282,6 +372,13 @@ theme_override_constants/shadow_offset_y = 2
 theme_override_font_sizes/normal_font_size = 36
 text = "CADENCE MACHINE"
 scroll_active = false
+
+[node name="Machine UI5" parent="menu_manager/menu_config" node_paths=PackedStringArray("machine") instance=ExtResource("20_338g4")]
+offset_left = 909.0
+offset_top = 477.0
+offset_right = 1097.0
+offset_bottom = 550.0
+machine = NodePath("../../../Machine5")
 
 [node name="profit_machine5" type="RichTextLabel" parent="menu_manager/menu_config"]
 offset_left = 700.0
@@ -365,7 +462,6 @@ position = Vector2(29, 144)
 
 [node name="Machine2" parent="." instance=ExtResource("26_uqcj8")]
 position = Vector2(835, 239)
-machine_type = 1
 _slot_count = 0
 
 [node name="Machine6" parent="." instance=ExtResource("25_024x3")]
@@ -394,6 +490,7 @@ one_shot = true
 
 [node name="Machine4" parent="." instance=ExtResource("55_lhpfv")]
 position = Vector2(355, 634)
+machine_type = 1
 _slot_count = 0
 
 [node name="Machine5" parent="." instance=ExtResource("24_w07ob")]
@@ -433,6 +530,11 @@ theme_override_constants/shadow_offset_y = 2
 theme_override_font_sizes/normal_font_size = 48
 text = "€"
 scroll_active = false
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Profit"]
+libraries = {
+"": SubResource("AnimationLibrary_yxm24")
+}
 
 [node name="Horloge" type="Node2D" parent="."]
 position = Vector2(1778, 128)

@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scripts/Machine UI.gd" id="1_ppypp"]
 
-[node name="Machine UI" type="Control" node_paths=PackedStringArray("machine")]
+[node name="Machine UI" type="Control"]
 layout_mode = 3
 anchors_preset = 0
 offset_left = 174.0
@@ -11,10 +11,13 @@ offset_right = 362.0
 offset_bottom = 432.0
 mouse_filter = 1
 script = ExtResource("1_ppypp")
-machine = NodePath("")
 
 [node name="SlotCount" type="RichTextLabel" parent="."]
+layout_mode = 0
 offset_right = 113.0
 offset_bottom = 70.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
 theme_override_font_sizes/normal_font_size = 50
 text = "0/0"
