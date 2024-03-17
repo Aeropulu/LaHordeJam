@@ -1,10 +1,8 @@
-[gd_scene load_steps=62 format=3 uid="uid://bbmfrvkiohwg5"]
+[gd_scene load_steps=61 format=3 uid="uid://bbmfrvkiohwg5"]
 
 [ext_resource type="Script" path="res://scripts/menu_manager.gd" id="1_30a5d"]
 [ext_resource type="Texture2D" uid="uid://5bydvgbkqt2x" path="res://assets/sprites/UI/menu_illustration.png" id="2_7o0cn"]
-[ext_resource type="Texture2D" uid="uid://buhdrmfpdabjw" path="res://assets/sprites/UI/standard_bouton_normal_placeHolder.png" id="2_kdlnj"]
 [ext_resource type="Texture2D" uid="uid://6vq85fmorcps" path="res://assets/sprites/UI/button_default.png" id="3_8he2y"]
-[ext_resource type="Texture2D" uid="uid://dws8op4xqaukn" path="res://assets/sprites/UI/standard_bouton_pressed_placeHolder.png" id="3_b1two"]
 [ext_resource type="Texture2D" uid="uid://bhuc2c4d0m4tx" path="res://assets/sprites/UI/button_clicked.png" id="4_mrgjf"]
 [ext_resource type="PackedScene" uid="uid://doq8qwsed4ijd" path="res://scenes/vfx/profit_effect.tscn" id="5_2u55f"]
 [ext_resource type="Texture2D" uid="uid://brfo22x5nyq3p" path="res://assets/sprites/UI/button_hover.png" id="5_pskvd"]
@@ -14,6 +12,7 @@
 [ext_resource type="Script" path="res://scripts/TextureProgressBar.gd" id="19_w50jk"]
 [ext_resource type="PackedScene" uid="uid://dlqjic7y2rfkq" path="res://scenes/vfx/text_effect.tscn" id="20_8gw2c"]
 [ext_resource type="PackedScene" uid="uid://c7sw7grkvasu" path="res://scenes/UI/machine_ui.tscn" id="20_338g4"]
+[ext_resource type="Texture2D" uid="uid://cuaptnvqookxo" path="res://assets/sprites/UI/gameover_illustration.png" id="23_lo0y3"]
 [ext_resource type="Texture2D" uid="uid://d3a6tvedd7x5e" path="res://assets/sprites/usine/usine_layout_.png" id="23_r66r1"]
 [ext_resource type="Script" path="res://scripts/Profit.gd" id="24_vxwht"]
 [ext_resource type="PackedScene" uid="uid://chr8ktkq33kv5" path="res://scenes/machineC.tscn" id="24_w07ob"]
@@ -299,6 +298,91 @@ fit_content = true
 scroll_active = false
 autowrap_mode = 0
 
+[node name="Day" type="RichTextLabel" parent="menu_manager/menu_briefing"]
+offset_left = 809.0
+offset_top = 364.0
+offset_right = 849.0
+offset_bottom = 404.0
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_font_sizes/normal_font_size = 60
+text = "Day"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+
+[node name="day_compteur" type="RichTextLabel" parent="menu_manager/menu_briefing"]
+offset_left = 947.0
+offset_top = 366.0
+offset_right = 1015.0
+offset_bottom = 449.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_font_sizes/normal_font_size = 60
+text = "1"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+
+[node name="GOAL" type="RichTextLabel" parent="menu_manager/menu_briefing"]
+offset_left = 634.0
+offset_top = 487.0
+offset_right = 764.0
+offset_bottom = 554.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_font_sizes/normal_font_size = 48
+text = "Goal: "
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+
+[node name="goal_compteur" type="RichTextLabel" parent="menu_manager/menu_briefing"]
+offset_left = 772.0
+offset_top = 487.0
+offset_right = 972.0
+offset_bottom = 554.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_font_sizes/normal_font_size = 48
+text = "2000000"
+scroll_active = false
+autowrap_mode = 0
+text_direction = 2
+
+[node name="AgendaTitle" type="RichTextLabel" parent="menu_manager/menu_briefing"]
+offset_left = 636.0
+offset_top = 564.0
+offset_right = 824.0
+offset_bottom = 631.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_font_sizes/normal_font_size = 48
+text = "Agenda:"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+
+[node name="AgendaDescription" type="RichTextLabel" parent="menu_manager/menu_briefing"]
+offset_left = 652.0
+offset_top = 655.0
+offset_right = 1252.0
+offset_bottom = 1060.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_font_sizes/normal_font_size = 32
+text = "- Today is your first day in the factory
+- Click on the GO TO FACTORY button to plan your worker's tasks
+- Mouse click left = add Michel to machine
+- Mouse click right = delete Michel from a machine"
+fit_content = true
+scroll_active = false
+
 [node name="menu_config" type="CanvasLayer" parent="menu_manager"]
 visible = false
 
@@ -446,6 +530,7 @@ text = "BROYEUSE"
 scroll_active = false
 
 [node name="menu_debriefing" type="CanvasLayer" parent="menu_manager"]
+visible = false
 
 [node name="ColorRect" type="ColorRect" parent="menu_manager/menu_debriefing"]
 offset_right = 1920.0
@@ -478,18 +563,54 @@ scroll_active = false
 autowrap_mode = 0
 
 [node name="menu_gameover" type="CanvasLayer" parent="menu_manager"]
-visible = false
 
 [node name="ColorRect" type="ColorRect" parent="menu_manager/menu_gameover"]
 offset_right = 1920.0
 offset_bottom = 1080.0
 color = Color(0, 0, 0, 0.764706)
 
+[node name="Sprite2D" type="Sprite2D" parent="menu_manager/menu_gameover"]
+position = Vector2(960, 540)
+texture = ExtResource("23_lo0y3")
+
 [node name="restart_game" type="TextureButton" parent="menu_manager/menu_gameover"]
-offset_right = 40.0
-offset_bottom = 40.0
-texture_normal = ExtResource("2_kdlnj")
-texture_pressed = ExtResource("3_b1two")
+offset_left = 721.0
+offset_top = 956.0
+offset_right = 1118.0
+offset_bottom = 1036.0
+texture_normal = ExtResource("3_8he2y")
+texture_pressed = ExtResource("4_mrgjf")
+texture_hover = ExtResource("5_pskvd")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="menu_manager/menu_gameover/restart_game"]
+layout_mode = 0
+offset_left = 28.0
+offset_top = 6.0
+offset_right = 379.0
+offset_bottom = 73.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_font_sizes/normal_font_size = 48
+text = "RESTART GAME"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+
+[node name="GameOverLabel" type="RichTextLabel" parent="menu_manager/menu_gameover"]
+offset_left = 28.0
+offset_top = 6.0
+offset_right = 762.0
+offset_bottom = 181.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 11
+theme_override_constants/shadow_offset_y = 11
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/normal_font_size = 128
+text = "GAME OVER"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
 
 [node name="GameMusic" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("16_feel5")
