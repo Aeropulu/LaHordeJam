@@ -2,20 +2,21 @@ extends TextureProgressBar
 
 var global_capital = 0
 var _death_effect: PackedScene = preload("res://scenes/vfx/blood_effect.tscn")
-var shakingTime = 100
+var shakingTime = 30
 
 func generate_death(capital):
 	#Create effect
-	var effect = _death_effect.instantiate()
-	add_child(effect)
-	%Camera2D.shakingTimer = shakingTime
-	#GLOBAl SCORE
-	global_capital += capital
+	#var effect = _death_effect.instantiate()
+	#add_child(effect)
+	#%Camera2D.shakingTimer = shakingTime
+	##GLOBAl SCORE
+	#global_capital += capital
+	pass
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	value = 0
-	max_value = 200
+	max_value = 50
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

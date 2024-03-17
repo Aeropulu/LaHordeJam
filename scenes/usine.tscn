@@ -1,36 +1,24 @@
-[gd_scene load_steps=65 format=3 uid="uid://bbmfrvkiohwg5"]
+[gd_scene load_steps=49 format=3 uid="uid://bbmfrvkiohwg5"]
 
-[ext_resource type="Texture2D" uid="uid://d1yex5ybh0fw6" path="res://assets/sprites/machines/machineA/machineA_00000.png" id="1_f2j7j"]
-[ext_resource type="Script" path="res://scripts/MachineA.gd" id="1_l6med"]
-[ext_resource type="Texture2D" uid="uid://bf61udq04chq1" path="res://assets/sprites/machines/machineA/machineA_00001.png" id="2_khn7c"]
-[ext_resource type="Texture2D" uid="uid://d4je1hfgyhtdo" path="res://assets/sprites/machines/machineA/machineA_00002.png" id="3_186kg"]
-[ext_resource type="Texture2D" uid="uid://b21ib1prb6d7h" path="res://assets/sprites/machines/machineA/machineA_00003.png" id="4_cyo6l"]
-[ext_resource type="Texture2D" uid="uid://byaa08ac851nc" path="res://assets/sprites/machines/machineA/machineA_00004.png" id="5_w3smi"]
-[ext_resource type="Texture2D" uid="uid://djxo08lopxjfu" path="res://assets/sprites/machines/machineA/machineA_00005.png" id="6_0pmqx"]
-[ext_resource type="Texture2D" uid="uid://jpo2hwr74nr0" path="res://assets/sprites/machines/broyeuse/broyeuse_00000.png" id="8_gs7cu"]
-[ext_resource type="Texture2D" uid="uid://t535hao4re63" path="res://assets/sprites/machines/broyeuse/broyeuse_00001.png" id="9_b8bgt"]
-[ext_resource type="Texture2D" uid="uid://brropyctk43ky" path="res://assets/sprites/machines/broyeuse/broyeuse_00002.png" id="10_l1j13"]
-[ext_resource type="Texture2D" uid="uid://cdvu66dthshm6" path="res://assets/sprites/machines/broyeuse/broyeuse_00003.png" id="11_jdkp5"]
-[ext_resource type="Texture2D" uid="uid://bc4qsflf34i0c" path="res://assets/sprites/machines/broyeuse/broyeuse_00004.png" id="12_kbd6x"]
-[ext_resource type="Texture2D" uid="uid://df7hq4rwsw164" path="res://assets/sprites/machines/broyeuse/broyeuse_00005.png" id="13_su1aa"]
+[ext_resource type="Script" path="res://scripts/menu_manager.gd" id="1_30a5d"]
+[ext_resource type="PackedScene" uid="uid://doq8qwsed4ijd" path="res://scenes/vfx/profit_effect.tscn" id="5_2u55f"]
 [ext_resource type="AudioStream" uid="uid://b25qd31qd13mu" path="res://assets/music/Energy_Source_-_Radiation.ogg" id="16_feel5"]
-[ext_resource type="PackedScene" uid="uid://cooe4hsaj68t4" path="res://scenes/michel.tscn" id="17_mmn0h"]
 [ext_resource type="Texture2D" uid="uid://eenud47e0iot" path="res://assets/sprites/machines/barre place holder.png" id="17_syvym"]
 [ext_resource type="Texture2D" uid="uid://dp0stfmlebfxp" path="res://assets/sprites/machines/bar progress fill placeholder.png" id="18_8g0ub"]
-[ext_resource type="Script" path="res://scenes/TextureProgressBar.gd" id="19_w50jk"]
+[ext_resource type="Script" path="res://scripts/TextureProgressBar.gd" id="19_w50jk"]
 [ext_resource type="PackedScene" uid="uid://dlqjic7y2rfkq" path="res://scenes/vfx/text_effect.tscn" id="20_8gw2c"]
 [ext_resource type="Texture2D" uid="uid://d3a6tvedd7x5e" path="res://assets/sprites/usine/usine_layout_.png" id="23_r66r1"]
-[ext_resource type="Script" path="res://scenes/Profit.gd" id="24_vxwht"]
+[ext_resource type="Script" path="res://scripts/Profit.gd" id="24_vxwht"]
 [ext_resource type="PackedScene" uid="uid://chr8ktkq33kv5" path="res://scenes/machineC.tscn" id="24_w07ob"]
 [ext_resource type="PackedScene" uid="uid://djxih46breah5" path="res://scenes/machineD.tscn" id="25_024x3"]
 [ext_resource type="PackedScene" uid="uid://bdfy2r4dblv5p" path="res://scenes/machine.tscn" id="25_t0uso"]
-[ext_resource type="Script" path="res://scenes/Horloge.gd" id="26_d54fv"]
+[ext_resource type="Script" path="res://scripts/Horloge.gd" id="26_d54fv"]
 [ext_resource type="PackedScene" uid="uid://b8n0jndurkhb1" path="res://scenes/machineA.tscn" id="26_uqcj8"]
 [ext_resource type="Texture2D" uid="uid://bmb3c6urw50gq" path="res://assets/sprites/UI/clock.png" id="27_ex2ea"]
 [ext_resource type="PackedScene" uid="uid://el5tjscnme0r" path="res://scenes/broyeuse.tscn" id="27_uthxa"]
 [ext_resource type="Texture2D" uid="uid://qksd5hwth1wt" path="res://assets/sprites/UI/hand.png" id="28_fnqka"]
 [ext_resource type="Texture2D" uid="uid://djp7y4vqdng4k" path="res://assets/sprites/UI/pointeuse/pointeuse.png" id="29_blibx"]
-[ext_resource type="Script" path="res://scenes/Pointeuse.gd" id="29_k2v45"]
+[ext_resource type="Script" path="res://scripts/Pointeuse.gd" id="29_k2v45"]
 [ext_resource type="Texture2D" uid="uid://ugunavtyvgie" path="res://assets/sprites/UI/pointeuse/pointeuse00000.png" id="30_1dcjx"]
 [ext_resource type="Texture2D" uid="uid://b2ny0xtsy7bvm" path="res://assets/sprites/UI/pointeuse/pointeuse00001.png" id="31_mauqa"]
 [ext_resource type="Texture2D" uid="uid://betkqxxlpds6s" path="res://assets/sprites/UI/pointeuse/pointeuse00002.png" id="32_cj51w"]
@@ -55,66 +43,8 @@
 [ext_resource type="Texture2D" uid="uid://bsvcaxgf0rkfu" path="res://assets/sprites/UI/market/market00008.png" id="52_hseva"]
 [ext_resource type="Texture2D" uid="uid://bnihiejo1jstw" path="res://assets/sprites/UI/market/market00009.png" id="53_xhokx"]
 [ext_resource type="Texture2D" uid="uid://cwpx315xj1umg" path="res://assets/sprites/UI/market/market00010.png" id="54_4tftg"]
-[ext_resource type="Script" path="res://scenes/Camera2D.gd" id="54_r10u0"]
+[ext_resource type="Script" path="res://scripts/Camera2D.gd" id="54_r10u0"]
 [ext_resource type="PackedScene" uid="uid://jnvnm53adtoi" path="res://scenes/machineB.tscn" id="55_lhpfv"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_v54bu"]
-size = Vector2(338, 326)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_vdlr6"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("1_f2j7j")
-}, {
-"duration": 1.0,
-"texture": ExtResource("2_khn7c")
-}, {
-"duration": 1.0,
-"texture": ExtResource("3_186kg")
-}, {
-"duration": 1.0,
-"texture": ExtResource("4_cyo6l")
-}, {
-"duration": 1.0,
-"texture": ExtResource("5_w3smi")
-}, {
-"duration": 1.0,
-"texture": ExtResource("6_0pmqx")
-}],
-"loop": true,
-"name": &"default",
-"speed": 12.0
-}]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ritsi"]
-size = Vector2(318, 328)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_87e42"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("8_gs7cu")
-}, {
-"duration": 1.0,
-"texture": ExtResource("9_b8bgt")
-}, {
-"duration": 1.0,
-"texture": ExtResource("10_l1j13")
-}, {
-"duration": 1.0,
-"texture": ExtResource("11_jdkp5")
-}, {
-"duration": 1.0,
-"texture": ExtResource("12_kbd6x")
-}, {
-"duration": 1.0,
-"texture": ExtResource("13_su1aa")
-}],
-"loop": true,
-"name": &"default",
-"speed": 12.0
-}]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_6qc18"]
 animations = [{
@@ -200,31 +130,56 @@ animations = [{
 
 [node name="Usine" type="Node2D"]
 
-[node name="MachineA" type="Area2D" parent="."]
-position = Vector2(-1105, 1206)
-script = ExtResource("1_l6med")
+[node name="menu_manager" type="Node2D" parent="."]
+script = ExtResource("1_30a5d")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="MachineA"]
-shape = SubResource("RectangleShape2D_v54bu")
+[node name="menu_main" type="CanvasLayer" parent="menu_manager"]
+visible = false
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="MachineA"]
-sprite_frames = SubResource("SpriteFrames_vdlr6")
-autoplay = "default"
-frame_progress = 0.193712
+[node name="Sprite2D" type="Sprite2D" parent="menu_manager/menu_main"]
 
-[node name="MachineB" type="Area2D" parent="."]
-position = Vector2(-590, 1210)
-script = ExtResource("1_l6med")
+[node name="ColorRect" type="ColorRect" parent="menu_manager/menu_main"]
+offset_right = 1920.0
+offset_bottom = 1080.0
+color = Color(0, 0, 0, 1)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="MachineB"]
-shape = SubResource("RectangleShape2D_ritsi")
+[node name="start_game" type="TextureButton" parent="menu_manager/menu_main"]
+offset_left = 860.0
+offset_top = 889.0
+offset_right = 900.0
+offset_bottom = 929.0
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="MachineB"]
-sprite_frames = SubResource("SpriteFrames_87e42")
-autoplay = "default"
+[node name="menu_briefing" type="CanvasLayer" parent="menu_manager"]
+visible = false
 
-[node name="michel" parent="." instance=ExtResource("17_mmn0h")]
-position = Vector2(-1455, 912)
+[node name="ColorRect" type="ColorRect" parent="menu_manager/menu_briefing"]
+offset_right = 1920.0
+offset_bottom = 1080.0
+color = Color(0, 0, 0, 1)
+
+[node name="menu_config" type="CanvasLayer" parent="menu_manager"]
+visible = false
+
+[node name="ColorRect" type="ColorRect" parent="menu_manager/menu_config"]
+offset_right = 1920.0
+offset_bottom = 1080.0
+color = Color(0, 0, 0, 0.470588)
+
+[node name="menu_debriefing" type="CanvasLayer" parent="menu_manager"]
+visible = false
+
+[node name="ColorRect" type="ColorRect" parent="menu_manager/menu_debriefing"]
+offset_right = 1920.0
+offset_bottom = 1080.0
+color = Color(0, 0, 0, 0.803922)
+
+[node name="menu_gameover" type="CanvasLayer" parent="menu_manager"]
+visible = false
+
+[node name="ColorRect" type="ColorRect" parent="menu_manager/menu_gameover"]
+offset_right = 1920.0
+offset_bottom = 1080.0
+color = Color(0, 0, 0, 0.764706)
 
 [node name="GameMusic" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("16_feel5")
@@ -234,6 +189,7 @@ autoplay = true
 
 [node name="Machine" parent="." instance=ExtResource("25_t0uso")]
 position = Vector2(340, 239)
+work_effect = ExtResource("5_2u55f")
 
 [node name="1" parent="Machine/Slots" index="0"]
 position = Vector2(148, 107)
@@ -350,8 +306,6 @@ unique_name_in_owner = true
 offset = Vector2(960, 540)
 script = ExtResource("54_r10u0")
 
-[connection signal="input_event" from="MachineA" to="MachineA" method="_on_input_event"]
-[connection signal="input_event" from="MachineB" to="MachineB" method="_on_input_event"]
 [connection signal="timeout" from="Machine3/TextureProgressBar/Timer" to="Machine3/TextureProgressBar" method="_on_timer_timeout"]
 [connection signal="animation_finished" from="Pointeuse/pointer" to="Pointeuse" method="_on_pointer_animation_finished"]
 [connection signal="input_event" from="Pointeuse/Area2D" to="Pointeuse" method="_on_area_2d_input_event"]
