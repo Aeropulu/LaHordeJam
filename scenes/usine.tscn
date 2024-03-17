@@ -305,9 +305,9 @@ autowrap_mode = 0
 
 [node name="Day" type="RichTextLabel" parent="menu_manager/menu_briefing"]
 offset_left = 809.0
-offset_top = 364.0
-offset_right = 849.0
-offset_bottom = 404.0
+offset_top = 313.0
+offset_right = 920.0
+offset_bottom = 396.0
 theme_override_colors/default_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/normal_font_size = 60
 text = "Day"
@@ -317,9 +317,9 @@ autowrap_mode = 0
 
 [node name="day_compteur" type="RichTextLabel" parent="menu_manager/menu_briefing"]
 offset_left = 947.0
-offset_top = 366.0
+offset_top = 315.0
 offset_right = 1015.0
-offset_bottom = 449.0
+offset_bottom = 398.0
 theme_override_colors/default_color = Color(0, 0, 0, 1)
 theme_override_constants/shadow_offset_x = 2
 theme_override_constants/shadow_offset_y = 2
@@ -331,9 +331,9 @@ autowrap_mode = 0
 
 [node name="GOAL" type="RichTextLabel" parent="menu_manager/menu_briefing"]
 offset_left = 634.0
-offset_top = 487.0
+offset_top = 436.0
 offset_right = 764.0
-offset_bottom = 554.0
+offset_bottom = 503.0
 theme_override_colors/default_color = Color(0, 0, 0, 1)
 theme_override_constants/shadow_offset_x = 2
 theme_override_constants/shadow_offset_y = 2
@@ -345,9 +345,9 @@ autowrap_mode = 0
 
 [node name="goal_compteur" type="RichTextLabel" parent="menu_manager/menu_briefing"]
 offset_left = 772.0
-offset_top = 487.0
+offset_top = 436.0
 offset_right = 972.0
-offset_bottom = 554.0
+offset_bottom = 503.0
 theme_override_colors/default_color = Color(0, 0, 0, 1)
 theme_override_constants/shadow_offset_x = 2
 theme_override_constants/shadow_offset_y = 2
@@ -359,9 +359,9 @@ text_direction = 2
 
 [node name="AgendaTitle" type="RichTextLabel" parent="menu_manager/menu_briefing"]
 offset_left = 636.0
-offset_top = 564.0
+offset_top = 513.0
 offset_right = 824.0
-offset_bottom = 631.0
+offset_bottom = 580.0
 theme_override_colors/default_color = Color(0, 0, 0, 1)
 theme_override_constants/shadow_offset_x = 2
 theme_override_constants/shadow_offset_y = 2
@@ -373,17 +373,18 @@ autowrap_mode = 0
 
 [node name="AgendaDescription" type="RichTextLabel" parent="menu_manager/menu_briefing"]
 offset_left = 677.0
-offset_top = 654.0
+offset_top = 603.0
 offset_right = 1277.0
-offset_bottom = 1059.0
+offset_bottom = 1053.0
 theme_override_colors/default_color = Color(0, 0, 0, 1)
 theme_override_constants/shadow_offset_x = 2
 theme_override_constants/shadow_offset_y = 2
 theme_override_font_sizes/normal_font_size = 32
-text = "- Today is your first day in the factory
+text = "- Reach the profit goal to pass to the next day
 - Click on the GO TO FACTORY button to plan your worker's tasks
 - Mouse click left = add Michel to machine
-- Mouse click right = delete Michel from a machine"
+- Mouse click right = delete Michel from a machine
+- When you are ready, click in the pointeuse to launch your work day"
 fit_content = true
 scroll_active = false
 
@@ -593,6 +594,7 @@ offset_left = 28.0
 offset_top = 6.0
 offset_right = 379.0
 offset_bottom = 73.0
+mouse_filter = 2
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_constants/shadow_offset_x = 2
 theme_override_constants/shadow_offset_y = 2
@@ -607,6 +609,7 @@ offset_left = 28.0
 offset_top = 6.0
 offset_right = 762.0
 offset_bottom = 181.0
+mouse_filter = 2
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_constants/shadow_offset_x = 11
 theme_override_constants/shadow_offset_y = 11
@@ -680,12 +683,14 @@ one_shot = true
 position = Vector2(355, 634)
 machine_type = 1
 work_effect = ExtResource("34_widjd")
+_base_cycle_duration = 0.2
 _slot_count = 0
 
 [node name="Machine5" parent="." instance=ExtResource("24_w07ob")]
 position = Vector2(845, 625)
 machine_type = 3
 work_effect = ExtResource("36_1ihod")
+_base_cycle_duration = 0.2
 _slot_count = 0
 
 [node name="Background" type="Sprite2D" parent="."]

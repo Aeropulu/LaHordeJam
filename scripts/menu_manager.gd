@@ -20,6 +20,8 @@ func _process(delta):
 func _on_start_game_pressed():
 	$menu_main.visible = false
 	$menu_briefing.visible = true
+	$menu_briefing/goal_compteur.text = str(FactoryManager.profit_objective)
+	$menu_briefing/day_compteur.text = str(FactoryManager.current_day)
 
 
 func _on_launch_config_pressed():
@@ -39,6 +41,8 @@ func on_game_over():
 func _on_next_day_pressed():
 	$menu_debriefing.visible = false
 	$menu_briefing.visible = true
+	$menu_briefing/goal_compteur.text = str(FactoryManager.profit_objective)
+	$menu_briefing/day_compteur.text = str(FactoryManager.current_day)
 
 
 func _on_restart_game_pressed():
