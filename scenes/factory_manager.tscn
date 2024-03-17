@@ -6,3 +6,5 @@
 position = Vector2(1727, 256)
 script = ExtResource("1_ivwkk")
 day_duration = 3.0
+
+[connection signal="day_end" from="." to="." method="_on_day_end"]

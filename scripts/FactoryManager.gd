@@ -6,15 +6,28 @@ var machines: Array[Machine]
 var slots: Array[Node2D]
 var workers: Array[Michel]
 
+signal max_slots_count_changed
+var max_slots_count:int = 1 : set = set_max_slots_count
+func set_max_slots_count(new_val):
+	max_slots_count = new_val
+	max_slots_count_changed.emit()
+
 var _worker_scene = preload("res://scenes/michel.tscn")
 var _can_start_day: bool = true
+var _day_in_progress:= false
+
+var current_day := 1
 
 var total_slot_count: int = 0
 
 var current_profit := 0 : set = set_current_profit
-var profit_objective := 0
+signal profit_objective_changed
+@export var profit_objective := 0 : set = set_profit_objective
+func set_profit_objective(new_val):
+	profit_objective = new_val
+	profit_objective_changed.emit()
 
-var _day_duration:float = 3.0
+@export var _day_duration:float = 3.0
 var _remaining_day_time:float = 0.0 : set = set_remaining_day_time
 signal remaining_day_time_changed(new_value)
 
@@ -39,9 +52,13 @@ func _ready():
 	pass
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _physics_process(delta):
+	if not _day_in_progress:
+		return
 	if _remaining_day_time > 0.0:
 		_remaining_day_time -= delta
+	else:
+		send_workers_home()
 	
 func set_current_profit(new_val):
 	current_profit = new_val
@@ -70,6 +87,8 @@ func spawn_workers(time: float):
 	_can_start_day = false
 	slots.clear()
 	workers.clear()
+	for machine in machines:
+		machine._workers.clear()
 	
 	var worker_count := 0
 	for machine in machines:
@@ -107,6 +126,7 @@ func _check_workers_in_place():
 
 func start_work():
 	_remaining_day_time = day_duration
+	_day_in_progress = true
 	for machine in machines:
 		machine.work_stopped.connect(_check_all_work_stopped, CONNECT_ONE_SHOT)
 		machine.start_work()
@@ -126,7 +146,8 @@ func send_workers_home():
 	for worker in workers:
 		worker.gone_home.connect(_check_workers_left, CONNECT_ONE_SHOT)
 		worker.go_home(0.5)
-		
+	_day_in_progress = false
+	
 func _check_workers_left():
 	var all_gone := true
 	for worker in workers:
@@ -162,3 +183,9 @@ func _on_button_pressed():
 	current_profit = 0
 	_current_speed_factor = 1.0
 	spawn_workers(0.5)
+
+func _on_day_end():
+	max_slots_count += 1
+	profit_objective *= 1 + 0.7 * current_day
+	current_day += 1
+	
