@@ -157,7 +157,7 @@ func get_slot(index: int) -> Node2D:
 		return null
 
 func add_slot() -> void:
-	if _slot_count < $Slots.get_child_count():
+	if _slot_count < $Slots.get_child_count() and FactoryManager.can_add_slot():
 		set_slot_count(_slot_count + 1)
 		slot_added.emit()
 	else:

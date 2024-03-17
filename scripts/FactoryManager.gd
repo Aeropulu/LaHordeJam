@@ -167,7 +167,7 @@ func _check_defeat():
 	day_end.emit()
 	
 func _on_machine_profit():
-	set_current_profit(current_profit + 100)
+	set_current_profit(current_profit + 100 * _current_multiplier)
 	
 func _on_machine_time_accel():
 	_current_speed_factor += _speed_factor_increment
@@ -189,3 +189,8 @@ func _on_day_end():
 	profit_objective *= 1 + 0.7 * current_day
 	current_day += 1
 	
+func can_add_slot() -> bool:
+	var occupied_slots = 0
+	for machine in machines:
+		occupied_slots += machine._slot_count
+	return occupied_slots < max_slots_count
