@@ -71,6 +71,7 @@ script = ExtResource("1_filjq")
 
 [node name="profitSFX" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("2_cfq6g")
+volume_db = -20.0
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("3_qedvc")

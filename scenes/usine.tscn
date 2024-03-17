@@ -1,4 +1,4 @@
-[gd_scene load_steps=61 format=3 uid="uid://bbmfrvkiohwg5"]
+[gd_scene load_steps=64 format=3 uid="uid://bbmfrvkiohwg5"]
 
 [ext_resource type="Script" path="res://scripts/menu_manager.gd" id="1_30a5d"]
 [ext_resource type="Texture2D" uid="uid://5bydvgbkqt2x" path="res://assets/sprites/UI/menu_illustration.png" id="2_7o0cn"]
@@ -25,12 +25,15 @@
 [ext_resource type="Texture2D" uid="uid://qksd5hwth1wt" path="res://assets/sprites/UI/hand.png" id="28_fnqka"]
 [ext_resource type="Texture2D" uid="uid://djp7y4vqdng4k" path="res://assets/sprites/UI/pointeuse/pointeuse.png" id="29_blibx"]
 [ext_resource type="Script" path="res://scripts/Pointeuse.gd" id="29_k2v45"]
+[ext_resource type="PackedScene" uid="uid://d2e557o4wyvaw" path="res://scenes/vfx/time_effect.tscn" id="29_m4pjf"]
 [ext_resource type="Texture2D" uid="uid://ugunavtyvgie" path="res://assets/sprites/UI/pointeuse/pointeuse00000.png" id="30_1dcjx"]
 [ext_resource type="Texture2D" uid="uid://b2ny0xtsy7bvm" path="res://assets/sprites/UI/pointeuse/pointeuse00001.png" id="31_mauqa"]
 [ext_resource type="Texture2D" uid="uid://betkqxxlpds6s" path="res://assets/sprites/UI/pointeuse/pointeuse00002.png" id="32_cj51w"]
 [ext_resource type="Texture2D" uid="uid://dtspq2qe5rp3a" path="res://assets/sprites/UI/pointeuse/pointeuse00003.png" id="33_bsbua"]
+[ext_resource type="PackedScene" uid="uid://bgov3i6fj84pt" path="res://scenes/vfx/cadence_effect.tscn" id="34_widjd"]
 [ext_resource type="Texture2D" uid="uid://10vp2kskeli4" path="res://assets/sprites/UI/pointeuse/pointeuse00004.png" id="34_x643l"]
 [ext_resource type="Texture2D" uid="uid://dm4hchgn18eoa" path="res://assets/sprites/UI/pointeuse/pointeuse00005.png" id="35_ieaif"]
+[ext_resource type="PackedScene" uid="uid://ykgafx1uoud1" path="res://scenes/vfx/boost_effect.tscn" id="36_1ihod"]
 [ext_resource type="Texture2D" uid="uid://bdxjbifucepdk" path="res://assets/sprites/UI/pointeuse/pointeuse00006.png" id="36_p0rm0"]
 [ext_resource type="Texture2D" uid="uid://bmyg8a1ipl8ea" path="res://assets/sprites/UI/pointeuse/pointeuse00007.png" id="37_j0426"]
 [ext_resource type="Texture2D" uid="uid://cp24e7vnbwfob" path="res://assets/sprites/UI/pointeuse/pointeuse00008.png" id="38_y1u2f"]
@@ -563,6 +566,7 @@ scroll_active = false
 autowrap_mode = 0
 
 [node name="menu_gameover" type="CanvasLayer" parent="menu_manager"]
+visible = false
 
 [node name="ColorRect" type="ColorRect" parent="menu_manager/menu_gameover"]
 offset_right = 1920.0
@@ -643,16 +647,19 @@ position = Vector2(29, 144)
 [node name="Machine2" parent="." instance=ExtResource("26_uqcj8")]
 position = Vector2(835, 239)
 work_effect = ExtResource("5_2u55f")
+_base_cycle_duration = 1.3
 _slot_count = 0
 
 [node name="Machine6" parent="." instance=ExtResource("25_024x3")]
 position = Vector2(1307, 249)
 work_effect = ExtResource("5_2u55f")
+_base_cycle_duration = 1.5
 _slot_count = 0
 
 [node name="Machine3" parent="." instance=ExtResource("27_uthxa")]
 position = Vector2(1324, 612)
 machine_type = 2
+work_effect = ExtResource("29_m4pjf")
 _slot_count = 0
 
 [node name="TextureProgressBar" type="TextureProgressBar" parent="Machine3"]
@@ -673,10 +680,13 @@ one_shot = true
 [node name="Machine4" parent="." instance=ExtResource("55_lhpfv")]
 position = Vector2(355, 634)
 machine_type = 1
+work_effect = ExtResource("34_widjd")
 _slot_count = 0
 
 [node name="Machine5" parent="." instance=ExtResource("24_w07ob")]
 position = Vector2(845, 625)
+machine_type = 3
+work_effect = ExtResource("36_1ihod")
 _slot_count = 0
 
 [node name="Background" type="Sprite2D" parent="."]

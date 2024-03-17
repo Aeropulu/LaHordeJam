@@ -71,6 +71,7 @@ script = ExtResource("1_rnc6k")
 
 [node name="profitSFX" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("2_kyrsa")
+volume_db = -20.0
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.25, 0.25)
