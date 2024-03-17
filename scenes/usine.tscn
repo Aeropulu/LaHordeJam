@@ -1,9 +1,13 @@
-[gd_scene load_steps=58 format=3 uid="uid://bbmfrvkiohwg5"]
+[gd_scene load_steps=62 format=3 uid="uid://bbmfrvkiohwg5"]
 
 [ext_resource type="Script" path="res://scripts/menu_manager.gd" id="1_30a5d"]
+[ext_resource type="Texture2D" uid="uid://5bydvgbkqt2x" path="res://assets/sprites/UI/menu_illustration.png" id="2_7o0cn"]
 [ext_resource type="Texture2D" uid="uid://buhdrmfpdabjw" path="res://assets/sprites/UI/standard_bouton_normal_placeHolder.png" id="2_kdlnj"]
+[ext_resource type="Texture2D" uid="uid://6vq85fmorcps" path="res://assets/sprites/UI/button_default.png" id="3_8he2y"]
 [ext_resource type="Texture2D" uid="uid://dws8op4xqaukn" path="res://assets/sprites/UI/standard_bouton_pressed_placeHolder.png" id="3_b1two"]
+[ext_resource type="Texture2D" uid="uid://bhuc2c4d0m4tx" path="res://assets/sprites/UI/button_clicked.png" id="4_mrgjf"]
 [ext_resource type="PackedScene" uid="uid://doq8qwsed4ijd" path="res://scenes/vfx/profit_effect.tscn" id="5_2u55f"]
+[ext_resource type="Texture2D" uid="uid://brfo22x5nyq3p" path="res://assets/sprites/UI/button_hover.png" id="5_pskvd"]
 [ext_resource type="AudioStream" uid="uid://b25qd31qd13mu" path="res://assets/music/Energy_Source_-_Radiation.ogg" id="16_feel5"]
 [ext_resource type="Texture2D" uid="uid://eenud47e0iot" path="res://assets/sprites/machines/barre place holder.png" id="17_syvym"]
 [ext_resource type="Texture2D" uid="uid://dp0stfmlebfxp" path="res://assets/sprites/machines/bar progress fill placeholder.png" id="18_8g0ub"]
@@ -227,19 +231,38 @@ script = ExtResource("1_30a5d")
 visible = false
 
 [node name="Sprite2D" type="Sprite2D" parent="menu_manager/menu_main"]
+position = Vector2(960, 540)
+texture = ExtResource("2_7o0cn")
 
 [node name="ColorRect" type="ColorRect" parent="menu_manager/menu_main"]
 offset_right = 1920.0
 offset_bottom = 1080.0
-color = Color(0, 0, 0, 1)
+color = Color(0, 0, 0, 0)
 
 [node name="start_game" type="TextureButton" parent="menu_manager/menu_main"]
-offset_left = 860.0
-offset_top = 889.0
-offset_right = 900.0
-offset_bottom = 929.0
-texture_normal = ExtResource("2_kdlnj")
-texture_pressed = ExtResource("3_b1two")
+offset_left = 1294.0
+offset_top = 573.0
+offset_right = 1422.0
+offset_bottom = 637.0
+texture_normal = ExtResource("3_8he2y")
+texture_pressed = ExtResource("4_mrgjf")
+texture_hover = ExtResource("5_pskvd")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="menu_manager/menu_main/start_game"]
+layout_mode = 0
+offset_left = 123.0
+offset_top = 4.0
+offset_right = 278.0
+offset_bottom = 71.0
+mouse_filter = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_font_sizes/normal_font_size = 48
+text = "START "
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
 
 [node name="menu_briefing" type="CanvasLayer" parent="menu_manager"]
 visible = false
@@ -252,14 +275,32 @@ color = Color(0, 0, 0, 1)
 [node name="Sprite2D" type="Sprite2D" parent="menu_manager/menu_briefing"]
 
 [node name="launch_config" type="TextureButton" parent="menu_manager/menu_briefing"]
-offset_left = 1645.0
-offset_top = 896.0
-offset_right = 1773.0
-offset_bottom = 960.0
-texture_normal = ExtResource("2_kdlnj")
-texture_pressed = ExtResource("3_b1two")
+offset_left = 1475.0
+offset_top = 945.0
+offset_right = 1872.0
+offset_bottom = 1025.0
+texture_normal = ExtResource("3_8he2y")
+texture_pressed = ExtResource("4_mrgjf")
+texture_hover = ExtResource("5_pskvd")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="menu_manager/menu_briefing/launch_config"]
+layout_mode = 0
+offset_left = 11.0
+offset_top = 4.0
+offset_right = 385.0
+offset_bottom = 71.0
+mouse_filter = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_font_sizes/normal_font_size = 48
+text = "GO TO FACTORY"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
 
 [node name="menu_config" type="CanvasLayer" parent="menu_manager"]
+visible = false
 
 [node name="ColorRect" type="ColorRect" parent="menu_manager/menu_config"]
 offset_right = 1920.0
@@ -405,18 +446,36 @@ text = "BROYEUSE"
 scroll_active = false
 
 [node name="menu_debriefing" type="CanvasLayer" parent="menu_manager"]
-visible = false
 
 [node name="ColorRect" type="ColorRect" parent="menu_manager/menu_debriefing"]
 offset_right = 1920.0
 offset_bottom = 1080.0
-color = Color(0, 0, 0, 0.803922)
+color = Color(0, 0, 0, 1)
 
 [node name="next_day" type="TextureButton" parent="menu_manager/menu_debriefing"]
-offset_right = 40.0
-offset_bottom = 40.0
-texture_normal = ExtResource("2_kdlnj")
-texture_pressed = ExtResource("3_b1two")
+offset_left = 1475.0
+offset_top = 945.0
+offset_right = 1872.0
+offset_bottom = 1025.0
+texture_normal = ExtResource("3_8he2y")
+texture_pressed = ExtResource("4_mrgjf")
+texture_hover = ExtResource("5_pskvd")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="menu_manager/menu_debriefing/next_day"]
+layout_mode = 0
+offset_left = 66.0
+offset_top = 2.0
+offset_right = 457.0
+offset_bottom = 69.0
+mouse_filter = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_font_sizes/normal_font_size = 48
+text = "NEXT DAY"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
 
 [node name="menu_gameover" type="CanvasLayer" parent="menu_manager"]
 visible = false
@@ -462,10 +521,12 @@ position = Vector2(29, 144)
 
 [node name="Machine2" parent="." instance=ExtResource("26_uqcj8")]
 position = Vector2(835, 239)
+work_effect = ExtResource("5_2u55f")
 _slot_count = 0
 
 [node name="Machine6" parent="." instance=ExtResource("25_024x3")]
 position = Vector2(1307, 249)
+work_effect = ExtResource("5_2u55f")
 _slot_count = 0
 
 [node name="Machine3" parent="." instance=ExtResource("27_uthxa")]
@@ -515,7 +576,7 @@ theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_constants/shadow_offset_x = 2
 theme_override_constants/shadow_offset_y = 2
 theme_override_font_sizes/normal_font_size = 48
-text = "1000000"
+text = "0"
 scroll_active = false
 text_direction = 2
 
