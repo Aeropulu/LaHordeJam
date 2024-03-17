@@ -57,12 +57,15 @@ func _set_cycle_duration(new_value):
 		_time_per_worker = _cycle_duration / _workers.size()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _physics_process(delta):
 	if _is_working:
-		_process_cycle(delta)
+		if machine_type == Machinetype.BROYEUSE:
+			_process_broyeuse(delta)
+		else:
+			_process_cycle(delta)
 	
 func start_work():
-	if _workers.size() == 0:
+	if _workers.size() == 0 and machine_type != Machinetype.BROYEUSE:
 		return
 	_is_working = true
 	for worker in _workers:
@@ -72,7 +75,8 @@ func start_work():
 func stop_work():
 	_is_working = false
 	for worker in _workers:
-		worker.stop_work()
+		if worker != null:
+			worker.stop_work()
 	work_stopped.emit()
 	_workers.clear()
 	$AnimatedSprite2D.speed_scale = 0
@@ -81,6 +85,7 @@ func _process_cycle(delta):
 	if _workers.size() <= 0 or _remaining_workers() <= 0:
 		return
 	_time_to_next_worker -= delta
+	# print(_time_per_worker)
 	if _time_to_next_worker <= 0:
 		_time_to_next_worker += _time_per_worker
 		_workers[_current_worker].work()
@@ -91,6 +96,13 @@ func _process_cycle(delta):
 			if (FactoryManager._remaining_day_time < _cycle_duration):
 				# No time to work more today lads
 				stop_work()
+
+func _process_broyeuse(delta):
+	_time_to_next_worker -= delta
+	if _time_to_next_worker <= 0.0:
+		_time_to_next_worker = 0.0
+		stop_work()
+		FactoryManager._check_workers_left()
 
 func _remaining_workers() -> int:
 	return _workers.size() - _current_worker
@@ -104,14 +116,22 @@ func _produce() -> void:
 		Machinetype.BROYEUSE:
 			on_crush_worker.emit()
 	
-func _add_worker(worker) -> bool:
-	var slots_count = $Slots.get_child_count()
+func _add_worker(worker) -> void:
 	_workers.append(worker)
 	_time_per_worker = _cycle_duration / _workers.size()
-	return true
 
+
+func _remove_worker(worker) -> void:
+	_workers.erase(worker)
+	if _workers.size() <= 0:
+		call_deferred("stop_work")
+	else:
+		_time_per_worker = _cycle_duration / _workers.size()
+	pass
 
 func _on_area_2d_input_event(_viewport, event, _shape_idx):
+	if not FactoryManager._can_start_day:
+		return
 	if event is InputEventMouseButton and event.pressed:
 		if event.button_mask & 2 == 2:
 			remove_slot()
@@ -144,3 +164,6 @@ func remove_slot() -> void:
 		slot_change_error.emit()
 		return
 	set_slot_count(_slot_count - 1)
+
+func is_broyeuse() -> bool:
+	return machine_type == Machinetype.BROYEUSE

@@ -1,6 +1,6 @@
-[gd_scene load_steps=9 format=3 uid="uid://el5tjscnme0r"]
+[gd_scene load_steps=9 format=3 uid="uid://dbgpfu6o02f3s"]
 
-[ext_resource type="PackedScene" uid="uid://bdfy2r4dblv5p" path="res://scenes/machine.tscn" id="1_1y4xf"]
+[ext_resource type="PackedScene" path="res://scenes/machine.tscn" id="1_1y4xf"]
 [ext_resource type="Texture2D" uid="uid://jpo2hwr74nr0" path="res://assets/sprites/machines/broyeuse/broyeuse_00000.png" id="2_ivmgp"]
 [ext_resource type="Texture2D" uid="uid://t535hao4re63" path="res://assets/sprites/machines/broyeuse/broyeuse_00001.png" id="3_gsloh"]
 [ext_resource type="Texture2D" uid="uid://brropyctk43ky" path="res://assets/sprites/machines/broyeuse/broyeuse_00002.png" id="4_a2rrr"]

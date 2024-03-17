@@ -111,14 +111,14 @@ func start_work():
 func _check_all_work_stopped():
 	var all_stopped := true
 	for machine in machines:
-		if machine._is_working:
+		if machine._is_working and not machine.is_broyeuse():
 			all_stopped = false
 	if all_stopped:
 		send_workers_home()
 		
 func send_workers_home():
 	if workers.size() == 0:
-		_check_defeat()
+		_check_workers_left()
 		return
 	for worker in workers:
 		worker.gone_home.connect(_check_workers_left, CONNECT_ONE_SHOT)
@@ -152,4 +152,6 @@ func _on_machine_crush_worker():
 	pass
 
 func _on_button_pressed():
+	current_profit = 0
+	_current_speed_factor = 1.0
 	spawn_workers(0.5)

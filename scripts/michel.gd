@@ -16,6 +16,8 @@ var _machine: Machine
 
 var is_dragging:bool = false
 var mouse_cursor_grab = preload("res://assets/sprites/cursor/cursor_grab.png")
+var mouse_cursor_point = preload("res://assets/sprites/cursor/cursor_point.png")
+var _is_crushed := false
 
 signal in_place
 signal gone_home
@@ -35,6 +37,8 @@ func _physics_process(delta):
 	if is_dragging:
 		global_position = get_global_mouse_position()
 		Input.set_custom_mouse_cursor(mouse_cursor_grab)
+		$Sprite2D.visible = false
+		$AnimatedSprite2D.visible = false
 	else:
 		if working:
 			$Sprite2D.visible = false
@@ -77,6 +81,8 @@ func _physics_process(delta):
 
 func go_to_slot(time: float):
 	await get_tree().physics_frame
+	if not target_slot is Node2D:
+		return
 	var tween = get_tree().create_tween()
 	var michel: Michel = self
 	tween.tween_property(michel, "global_position", target_slot.global_position, time)
@@ -85,6 +91,8 @@ func go_to_slot(time: float):
 	in_place.emit()
 	
 func go_home(time: float):
+	if _is_crushed:
+		return
 	var tween = get_tree().create_tween()
 	var michel: Michel = self
 	tween.tween_property(michel, "global_position", door_pos, time)
@@ -101,14 +109,31 @@ func stop_work():
 
 func begin_drag():
 	is_dragging = true
-	$Sprite2D.visible = false
 	$drag.visible = true
 	
 func end_drag():
+	Input.set_custom_mouse_cursor(mouse_cursor_point)
 	is_dragging = false
-	$Sprite2D.visible = true
 	$drag.visible = false
+	_check_broyeuse()
+	if target_slot is Node2D:
+		go_to_slot(0.3)
 	
+func _check_broyeuse():
+	var michel_area: Area2D = $Area2D
+	for area in michel_area.get_overlapping_areas():
+		var machine = area.get_parent()
+		if machine is Machine and machine.is_broyeuse():
+			has_gone_home = true
+			_is_crushed = true
+			target_slot = null
+			_machine._remove_worker(self)
+			_machine = machine
+			machine._add_worker(self)
+			machine.start_work()
+			machine.on_crush_worker.emit()
+			FactoryManager.workers.erase(self)
+			queue_free()
 
 func _on_area_2d_input_event(viewport, event, shape_idx):
 	if event is InputEventMouseButton:
