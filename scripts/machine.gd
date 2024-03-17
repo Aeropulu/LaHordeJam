@@ -5,6 +5,8 @@ enum Machinetype { PROFIT, TIME, BROYEUSE }
 @export var machine_type: Machinetype
 var _worker_scene: PackedScene = preload("res://scenes/michel.tscn")
 
+@export var work_effect: PackedScene
+
 @export var _base_cycle_duration := 1.0
 var _cycle_duration: float = 1.0
 var _current_worker: int = 0
@@ -12,6 +14,7 @@ var _workers: Array[Michel]
 
 var _time_per_worker: float = 1.0
 var _time_to_next_worker: float = 1.0
+
 @export var _slot_count = 1
 
 var _is_working:bool = false

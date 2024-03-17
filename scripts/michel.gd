@@ -21,7 +21,11 @@ signal in_place
 signal gone_home
 
 func work():
-	pass
+	if _machine.work_effect is PackedScene:
+		var effect = _machine.work_effect.instantiate()
+		if effect is Node2D:
+			effect.global_position = global_position
+		get_tree().root.add_child(effect)
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
