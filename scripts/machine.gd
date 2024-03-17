@@ -1,7 +1,7 @@
 extends Node2D
 class_name  Machine
 
-enum Machinetype { PROFIT, TIME, BROYEUSE }
+enum Machinetype { PROFIT, TIME, BROYEUSE, MULTIPLIER }
 @export var machine_type: Machinetype
 var _worker_scene: PackedScene = preload("res://scenes/michel.tscn")
 
@@ -26,6 +26,7 @@ var _is_working:bool = false
 signal on_profit
 signal on_time_accel
 signal on_crush_worker
+signal on_multiplier_increase
 
 signal workers_in_place
 signal work_started
@@ -38,6 +39,7 @@ func _ready():
 	on_profit.connect(FactoryManager._on_machine_profit)
 	on_time_accel.connect(FactoryManager._on_machine_time_accel)
 	on_crush_worker.connect(FactoryManager._on_machine_crush_worker)
+	on_multiplier_increase.connect(FactoryManager._on_machine_multiplier_increase)
 	FactoryManager.speed_factor_changed.connect(_on_speed_factor_changed)
 	_cycle_duration = _base_cycle_duration / FactoryManager._current_speed_factor
 
@@ -115,6 +117,8 @@ func _produce() -> void:
 			on_time_accel.emit()
 		Machinetype.BROYEUSE:
 			on_crush_worker.emit()
+		Machinetype.MULTIPLIER:
+			on_multiplier_increase.emit()
 	
 func _add_worker(worker) -> void:
 	_workers.append(worker)

@@ -22,6 +22,9 @@ var _current_speed_factor := 1.0 : set = set_speed_factor
 var _speed_factor_increment := 0.1
 signal speed_factor_changed
 
+var _current_multiplier := 1.0
+var _multiplier_increment := 0.1
+
 signal profit_changed(new_value)
 
 signal workers_spawned
@@ -150,6 +153,10 @@ func _on_machine_time_accel():
 	
 func _on_machine_crush_worker():
 	pass
+	
+func _on_machine_multiplier_increase():
+	_current_multiplier += _multiplier_increment
+	
 
 func _on_button_pressed():
 	current_profit = 0
