@@ -131,6 +131,7 @@ func _check_broyeuse():
 			_machine = machine
 			machine._add_worker(self)
 			machine.start_work()
+			machine._produce()
 			machine.on_crush_worker.emit()
 			FactoryManager.workers.erase(self)
 			queue_free()
